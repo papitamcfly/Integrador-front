@@ -1,0 +1,68 @@
+/* Light Theme Colors */
+:root {
+    --seed: #00194A;
+    --md-theme-light-primary: #3B5BA9;
+    --md-theme-light-onPrimary: #FFFFFF;
+    --md-theme-light-primaryContainer: #DAE2FF;
+    --md-theme-light-onPrimaryContainer: #001848;
+    --md-theme-light-secondary: #255EA6;
+    --md-theme-light-onSecondary: #FFFFFF;
+    --md-theme-light-secondaryContainer: #D5E3FF;
+    --md-theme-light-onSecondaryContainer: #001B3C;
+    --md-theme-light-tertiary: #0062A1;
+    --md-theme-light-onTertiary: #FFFFFF;
+    --md-theme-light-tertiaryContainer: #D0E4FF;
+    --md-theme-light-onTertiaryContainer: #001D35;
+    --md-theme-light-error: #BA1A1A;
+    --md-theme-light-errorContainer: #FFDAD6;
+    --md-theme-light-onError: #FFFFFF;
+    --md-theme-light-onErrorContainer: #410002;
+    --md-theme-light-background: #FAFCFF;
+    --md-theme-light-onBackground: #001F2A;
+    --md-theme-light-surface: #FAFCFF;
+    --md-theme-light-onSurface: #001F2A;
+    --md-theme-light-surfaceVariant: #E1E2EC;
+    --md-theme-light-onSurfaceVariant: #45464F;
+    --md-theme-light-outline: #757780;
+    --md-theme-light-inverseOnSurface: #E1F4FF;
+    --md-theme-light-inverseSurface: #003547;
+    --md-theme-light-inversePrimary: #B2C5FF;
+    --md-theme-light-shadow: #000000;
+    --md-theme-light-surfaceTint: #3B5BA9;
+    --md-theme-light-outlineVariant: #C5C6D0;
+    --md-theme-light-scrim: #000000;
+  }
+  
+  /* Dark Theme Colors */
+  .dark-theme {
+    --md-theme-dark-primary: #B2C5FF;
+    --md-theme-dark-onPrimary: #002B73;
+    --md-theme-dark-primaryContainer: #1F428F;
+    --md-theme-dark-onPrimaryContainer: #DAE2FF;
+    --md-theme-dark-secondary: #A8C8FF;
+    --md-theme-dark-onSecondary: #003061;
+    --md-theme-dark-secondaryContainer: #004689;
+    --md-theme-dark-onSecondaryContainer: #D5E3FF;
+    --md-theme-dark-tertiary: #9DCAFF;
+    --md-theme-dark-onTertiary: #003257;
+    --md-theme-dark-tertiaryContainer: #00497B;
+    --md-theme-dark-onTertiaryContainer: #D0E4FF;
+    --md-theme-dark-error: #FFB4AB;
+    --md-theme-dark-errorContainer: #93000A;
+    --md-theme-dark-onError: #690005;
+    --md-theme-dark-onErrorContainer: #FFDAD6;
+    --md-theme-dark-background: #001F2A;
+    --md-theme-dark-onBackground: #BFE9FF;
+    --md-theme-dark-surface: #001F2A;
+    --md-theme-dark-onSurface: #BFE9FF;
+    --md-theme-dark-surfaceVariant: #45464F;
+    --md-theme-dark-onSurfaceVariant: #C5C6D0;
+    --md-theme-dark-outline: #8F909A;
+    --md-theme-dark-inverseOnSurface: #001F2A;
+    --md-theme-dark-inverseSurface: #BFE9FF;
+    --md-theme-dark-inversePrimary: #3B5BA9;
+    --md-theme-dark-shadow: #000000;
+    --md-theme-dark-surfaceTint: #B2C5FF;
+    --md-theme-dark-outlineVariant: #45464F;
+    --md-theme-dark-scrim: #000000;
+  }
