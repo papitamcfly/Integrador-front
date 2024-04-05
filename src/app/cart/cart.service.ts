@@ -1,40 +1,43 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { ProductList } from '../interfaces/product-list';
+import { CartItem } from '../interfaces/cart-item';
 @Injectable({
   providedIn: 'root'
 })
 export class CartService  {
-  private apiUrl = '/api/cart';
+  private cart: CartItem[] = [];
 
-  constructor(private http: HttpClient) { }
+  addToCart(product: ProductList,cantidad:number): void {
+    const existingCartItem = this.cart.find(item => item.product.id === product.id);
 
-  getCart(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}`);
+    if (existingCartItem) {
+      existingCartItem.quantity += cantidad
+    } else {
+      const cartItem: CartItem = {
+        product: product,
+        quantity: cantidad
+      };
+      this.cart.push(cartItem);
+    }
   }
 
-  removeFromCart(itemId: string): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/remove`, { params: { id: itemId } });
+  removeFromCart(index: number): void {
+    this.cart.splice(index, 1);
   }
 
-  updateQuantity(itemId: string, quantity: number): Observable<any> {
-    return this.http.put(`${this.apiUrl}/update`, { id: itemId, quantity });
+  getCart(): CartItem[] {
+    return this.cart;
   }
 
-  clearCart(): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/clear`);
+  getTotal(): number {
+    let total = 0;
+    for (const item of this.cart) {
+      total += item.product.price * item.quantity;
+    }
+    return total;
   }
-  addToCart(product: any): Observable<any> {
-    const url = `${this.apiUrl}/add`;
-    const body = {
-      id: product.id,
-      name: product.name,
-      price: product.price,
-      quantity: 1, // Puedes ajustar la cantidad inicial aquí
-      img: product.imageUrl,
-      slug: product.slug // Supongo que tu producto tiene una propiedad "slug"
-    };
 
-    return this.http.post(url, body);
+  clearCart(): void {
+    this.cart = [];
   }
 }

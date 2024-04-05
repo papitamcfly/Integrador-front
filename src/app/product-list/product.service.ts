@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
+import { ProductList } from '../interfaces/product-list';
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  private apiUrl = '/api/products'; // Ruta de tu API de productos
+  private apiUrl = 'http://localhost:8000/api/products';
 
   constructor(private http: HttpClient) { }
 
-  getProducts(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}`);
+  getProducts(): Observable<ProductList[]> {
+    return this.http.get<ProductList[]>(this.apiUrl);
   }
 }

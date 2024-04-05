@@ -154,13 +154,13 @@ export const routes: Routes = [
         canActivate: [LoginGuard, RolGuard]
       },
       {
-        path: 'salas/index',
-        loadChildren: () => import('./salas/salas-index/salas-index.module').then(m => m.SalasIndexModule),
+        path: 'product-list/index',
+        loadChildren: () => import('./product-list/product-list.module').then(m => m.ProductListModule),
         canActivate: [LoginGuard]
       },
       {
-        path: 'salas/index',
-        loadChildren: () => import('./salas/salas-index/salas-index.module').then(m => m.SalasIndexModule),
+        path: 'cart/index',
+        loadChildren: () => import('./cart/cart.module').then(m => m.CartModule),
         canActivate: [LoginGuard]
       },
     { path: '', redirectTo: '/login', pathMatch: 'full' },

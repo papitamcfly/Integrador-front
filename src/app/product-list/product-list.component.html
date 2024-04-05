@@ -1,11 +1,19 @@
-<h2>Product List</h2>
+<div class="container">
+  <h2>Menú</h2>
 
-<div *ngFor="let product of products">
-  <div>
-    <img [src]="product.imageUrl" [alt]="product.name">
-    <h3>{{ product.name }}</h3>
-    <p>{{ product.description }}</p>
-    <p>Price: {{ product.price }}</p>
-    <button (click)="addToCart(product)">Add to Cart</button>
+  <div *ngIf="products.length === 0" class="no-products">
+    <p>No hay productos disponibles.</p>
   </div>
+
+  <div *ngIf="products.length > 0" class="product-list">
+    <div *ngFor="let product of products" class="product-item col-3">
+      <h3>{{ product.name }}</h3>
+      <img [src]="product.img" alt="producto">
+      <p>{{ product.description }}</p>
+      <input type="number" id="cantidadInput" name="cantidadInput" #cantidadInput>
+      <p>Precio: {{ product.price | currency }}</p>
+      <button class="btn btn-primary" (click)="addToCart(product, cantidadInput.value)">Agregar al carrito</button>
+    </div>
+  </div>
+  <app-cart></app-cart>
 </div>

@@ -7,24 +7,7 @@
      </button>
      <div class="collapse navbar-collapse" id="navbarSupportedContent">
        <ul class="navbar-nav mb-2 mb-lg-0">
-         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" *ngIf="hasAuthToken" routerLink="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Cines
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" *ngIf="rolId != 1" routerLink="/cines/create">Crear Cine</a></li>
-            <li><a class="dropdown-item" routerLink="/cines/index">Ver Cines</a></li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" *ngIf="hasAuthToken" routerLink="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Salas
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" *ngIf="rolId == 3" routerLink="/salas/create">Crear Sala</a></li>
-            <li><a class="dropdown-item" routerLink="/salas/index">Ver Salas</a></li>
-          </ul>
-        </li>
+
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" *ngIf="hasAuthToken" routerLink="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Combos
@@ -81,6 +64,8 @@
             <li><a class="dropdown-item" routerLink="/boletos/index">Ver Boletos</a></li>
           </ul>
         </li>
+        <li><a class="nav-item" *ngIf="rolId == 3" routerLink="/product-list/index">productos</a></li>
+        <li><a class="nav-item" *ngIf="rolId == 3" routerLink="/cart/index">carro</a></li>
        </ul>
        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <div id="ninth" class="buttonbox" >

@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from './cart.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms'; 
+import { CartItem } from '../interfaces/cart-item';
+import { OrderService } from './order.service';
+import { ProductList } from '../interfaces/product-list';
 @Component({
   selector: 'app-cart',
   standalone: true,
@@ -9,56 +12,46 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css'
 })
-export class CartComponent implements OnInit {
-  cartItems: any[] = [];
+export class CartComponent{
+  cart: CartItem[] = [];
 
-  constructor(private cartService: CartService) { }
-
-  ngOnInit(): void {
-    this.getCartItems();
+  constructor(
+    private cartService: CartService,
+    private orderService: OrderService
+  ) {
+    this.cart = this.cartService.getCart();
   }
 
-  getCartItems(): void {
-    this.cartService.getCart().subscribe(
-      (items: any[]) => {
-        this.cartItems = items;
-      },
-      (error) => {
-        console.error('Error fetching cart items', error);
-      }
-    );
+  addToCart(product: ProductList,cantidad:number): void {
+    this.cartService.addToCart(product,cantidad);
+    this.cart = this.cartService.getCart();
   }
 
-  removeFromCart(itemId: string): void {
-    this.cartService.removeFromCart(itemId).subscribe(
-      () => {
-        this.getCartItems();
-      },
-      (error) => {
-        console.error('Error removing item from cart', error);
-      }
-    );
+  removeFromCart(index: number): void {
+    this.cartService.removeFromCart(index);
+    this.cart = this.cartService.getCart();
   }
 
-  updateQuantity(itemId: string, quantity: number): void {
-    this.cartService.updateQuantity(itemId, quantity).subscribe(
-      () => {
-        this.getCartItems();
-      },
-      (error) => {
-        console.error('Error updating item quantity', error);
-      }
-    );
+  getTotal(): number {
+    return this.cartService.getTotal();
   }
 
-  clearCart(): void {
-    this.cartService.clearCart().subscribe(
-      () => {
-        this.getCartItems();
-      },
-      (error) => {
-        console.error('Error clearing cart', error);
-      }
-    );
+  placeOrder(): void {
+    const order = {
+      items: this.cart.map(item => ({
+        product_id: item.product.id,
+        quantity: item.quantity
+      }))
+    };
+
+    this.orderService.createOrder(order)
+      .subscribe(
+        () => {
+          this.cartService.clearCart();
+          this.cart = [];
+          alert('Orden realizada con éxito');
+        },
+        error => alert('Error al realizar la orden')
+      );
   }
 }
