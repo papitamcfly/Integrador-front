@@ -29,5 +29,14 @@ export class CookieService {
    deleteFCookie(name: string) {
     document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
   }
-   
+  clearAuthCookies() {
+    this.deleteFCookie('authToken');
+    this.deleteFCookie('rol');
+  }
+  constructor() {
+    window.addEventListener('beforeunload', this.handleBeforeUnload.bind(this));
+  }
+  private handleBeforeUnload() {
+    this.clearAuthCookies();
+  }
 }

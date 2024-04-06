@@ -9,7 +9,7 @@ import { CartComponent } from '../cart/cart.component';
   standalone: true,
   imports: [CommonModule,CartComponent],
   templateUrl: './product-list.component.html',
-  styleUrl: './product-list.component.css'
+  styleUrl: './product-list.component.scss'
 })
 export class ProductListComponent implements OnInit {
   products: ProductList[] = [];

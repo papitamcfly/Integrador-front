@@ -4,16 +4,17 @@
   <div *ngIf="products.length === 0" class="no-products">
     <p>No hay productos disponibles.</p>
   </div>
-
-  <div *ngIf="products.length > 0" class="product-list">
-    <div *ngFor="let product of products" class="product-item col-3">
+<div *ngIf="products.length > 0" class="container text-center">
+  <div  class="row product-list">
+    <div *ngFor="let product of products" class="card col-4 product-item" id="card">
       <h3>{{ product.name }}</h3>
-      <img [src]="product.img" alt="producto">
+      <img [src]="product.img" class="img-thumbnail" alt="producto">
       <p>{{ product.description }}</p>
-      <input type="number" id="cantidadInput" name="cantidadInput" #cantidadInput>
+      <input type="number" id="cantidadInput" name="cantidadInput" #cantidadInput value="1" min="1">
       <p>Precio: {{ product.price | currency }}</p>
       <button class="btn btn-primary" (click)="addToCart(product, cantidadInput.value)">Agregar al carrito</button>
     </div>
   </div>
+</div>
   <app-cart></app-cart>
 </div>
