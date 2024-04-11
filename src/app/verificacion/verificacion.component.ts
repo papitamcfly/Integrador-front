@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -52,13 +52,17 @@ export class VerificacionComponent implements OnInit {
         data => {
           console.log('Código verificado exitosamente', data);
           localStorage.setItem('authToken', data.token);
-          this.cookieService.set('authToken', data.token);
-          this.cookieService.set('rol', String(data.rol_id));
+          this.cookieService.set('authToken', data.token, 1); // Expiración en 1 día
+          this.cookieService.set('rol', String(data.rol_id), 1); // Expiración en 1 día
           this.changeDetectorRef.detectChanges(); // Detectar cambios
           window.location.reload();
         },
         error => console.error('Error al verificar el código', error)
       );
     }
+  }
+  ngOnDestroy() {
+    this.cookieService.delete('authToken');
+    this.cookieService.delete('rol');
   }
 }

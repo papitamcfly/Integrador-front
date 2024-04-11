@@ -15,10 +15,10 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
  styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
- title = 'Cines';
+ title = 'Roborestaurant';
  rolId: number = 0;
  hasAuthToken: boolean = false;
-
+ hascAuthToken: boolean = false;
  constructor(
   private cookieService: CookieService,
   private router: Router,
@@ -27,8 +27,11 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     const authToken = localStorage.getItem('authToken');
+    const cAuthToken = this.cookieService.get('authToken');
     this.hasAuthToken = !!authToken; // Convierte el valor a booleano
-    if (this.hasAuthToken) {
+    this.hascAuthToken = !!cAuthToken;
+
+    if (this.hasAuthToken && this.hascAuthToken) {
       this.rolId = parseInt(this.cookieService.get('rol') || '0', 10);
     } else {
       this.rolId = 0;
@@ -43,17 +46,19 @@ export class AppComponent implements OnInit {
       this.loginService.logoutUser().subscribe(
         (response: any) => {
           console.log(response.message);
-          localStorage.removeItem('authToken');
-          this.cookieService.delete('authToken');
-          this.cookieService.delete('rol');
-          this.rolId = 0;
-          this.changeDetectorRef.detectChanges();
-          window.location.reload();
+
         },
         error => {
           console.error('Error al cerrar la sesión:', error);
         }
       );
+      localStorage.removeItem('authToken');
+      this.cookieService.delete('authToken');
+      this.cookieService.delete('rol');
+      this.rolId = 0;
+      this.changeDetectorRef.detectChanges();
+      window.location.reload();
+      
     }
   }
 }
