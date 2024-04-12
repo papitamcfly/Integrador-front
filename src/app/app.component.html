@@ -1,62 +1,61 @@
-<nav class="navbar navbar-expand-lg" style="background-color: #0062A1;" >
+<nav class="navbar navbar-expand-lg navbar-dark">
   <div class="container-fluid">
-   <img class="icon" src="https://pbs.twimg.com/profile_images/1724074562604744704/7OangAlw_400x400.jpg" alt="robotito">
-     <a class="navbar-brand" >Roborestaurant</a>
+     <img class="icon" src="https://pbs.twimg.com/profile_images/1724074562604744704/7OangAlw_400x400.jpg" alt="robotito">
+     <a class="navbar-brand text">Roborestaurant</a>
      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
        <span class="navbar-toggler-icon"></span>
      </button>
      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-       <ul class="navbar-nav mb-2 mb-lg-0">
-
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" *ngIf="hasAuthToken" routerLink="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Combos
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" *ngIf="rolId == 3" routerLink="/combos/create">Crear Combo</a></li>
-            <li><a class="dropdown-item" routerLink="/combos/index">Ver Combos</a></li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" *ngIf="hasAuthToken" routerLink="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Generos
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" *ngIf="rolId != 1" routerLink="/generos/create">Crear Genero</a></li>
-            <li><a class="dropdown-item" routerLink="/generos/index">Ver Generos</a></li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" *ngIf="hasAuthToken" routerLink="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Productos
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" *ngIf="rolId == 3" routerLink="/productos/create">Crear Producto</a></li>
-            <li><a class="dropdown-item" routerLink="/productos/index">Ver Productos</a></li>
-          </ul>
-        </li>
-        <li><a class="nav-item" *ngIf="rolId == 3" routerLink="/product-list/index">productos</a></li>
-        <li><a class="nav-item" *ngIf="rolId == 3" routerLink="/cart/index">carro</a></li>
+       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+         <li class="nav-item dropdown" *ngIf="hasAuthToken">
+           <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+             Combos
+           </a>
+           <ul class="dropdown-menu">
+             <li><a class="dropdown-item" *ngIf="rolId == 3" routerLink="/combos/create">Crear Combo</a></li>
+             <li><a class="dropdown-item" routerLink="/combos/index">Ver Combos</a></li>
+           </ul>
+         </li>
+         <li class="nav-item dropdown" *ngIf="hasAuthToken">
+           <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+             Generos
+           </a>
+           <ul class="dropdown-menu">
+             <li><a class="dropdown-item" *ngIf="rolId != 1" routerLink="/generos/create">Crear Genero</a></li>
+             <li><a class="dropdown-item" routerLink="/generos/index">Ver Generos</a></li>
+           </ul>
+         </li>
+         <li class="nav-item dropdown" *ngIf="hasAuthToken">
+           <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+             Productos
+           </a>
+           <ul class="dropdown-menu">
+             <li><a class="dropdown-item" *ngIf="rolId == 3" routerLink="/productos/create">Crear Producto</a></li>
+             <li><a class="dropdown-item" routerLink="/productos/index">Ver Productos</a></li>
+           </ul>
+         </li>
+         <li *ngIf="rolId == 3"><a class="nav-link" routerLink="/product-list/index">productos</a></li>
+         <li *ngIf="rolId == 3"><a class="nav-link" routerLink="/cart/index">carro</a></li>
        </ul>
        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <div id="ninth" class="buttonbox" >
-         <li class="nav-item "style="border-radius: 10px;margin-right: 10px" *ngIf="!hasAuthToken" >
-           <a class="nav-link" routerLink="/login">Iniciar Sesión</a>
-         </li>
-        </div>
-        <div id="ninth" class="buttonbox" >
-         <li class="nav-item" style="border-radius: 10px;" *ngIf="!hasAuthToken">
-           <a class="nav-link" routerLink="/register" >Regitrarse</a>
-         </li>
-        </div>
-        <div id="ninth" class="buttonbox" *ngIf="hasAuthToken">
-         <li class="nav-item" style="border-radius: 10px;">
-          <button class="nav-link"  (click)="logOut($event)">Cerrar Sesión</button>
-        </li>
-      </div>
+         <div class="buttonbox">
+           <li class="nav-item" *ngIf="!hasAuthToken">
+             <a class="nav-link" routerLink="/login">Iniciar Sesión</a>
+           </li>
+         </div>
+         <div class="buttonbox">
+           <li class="nav-item" *ngIf="!hasAuthToken">
+             <a class="nav-link" routerLink="/register">Registrarse</a>
+           </li>
+         </div>
+         <div class="buttonbox" *ngIf="hasAuthToken">
+           <li class="nav-item">
+             <button class="nav-link" (click)="logOut($event)">Cerrar Sesión</button>
+           </li>
+         </div>
        </ul>
      </div>
   </div>
  </nav>
- <router-outlet style="background-color: black;"/>
+ <router-outlet></router-outlet>
  

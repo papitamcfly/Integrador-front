@@ -1,11 +1,10 @@
-@import '../../styles.css';
-
 // Paleta de colores
-$primary-color: #2E3192;
-$secondary-color: #A6A8D7;
-$accent-color: #E63946;
-$background-color: #F1F3F5;
-$text-color: #333;
+$background-color: #f7f7f7;
+$form-color: #ffffff;
+$primary-color: #2d2d2d;
+$secondary-color: #757575;
+$accent-color: #ff6d00;
+$text-color: #333333;
 
 /* Estilos generales */
 body {
@@ -14,16 +13,24 @@ body {
   color: $text-color;
 }
 
+.full-background {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .card {
+  background-color: $form-color;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  max-width: 800px; // Aumentado el ancho máximo
+  max-width: 600px;
   margin: 0 auto;
 }
 
 .card-header {
   background-color: $primary-color;
-  color: #fff;
+  color: $form-color;
   border-radius: 10px 10px 0 0;
   padding: 1rem;
   text-align: center;
@@ -31,12 +38,11 @@ body {
 }
 
 form {
-  padding: 30px 10px;
-  background-color: #fff;
+  padding: 30px;
 }
 
 .form-group {
-  margin-bottom: 1.5rem; // Aumentado el margen inferior
+  margin-bottom: 1.5rem;
 }
 
 .input-container {
@@ -53,18 +59,22 @@ form {
 
 .form-control {
   font-size: 16px;
-  padding: 10px 10px 10px 30px; // Ajustado el padding para separar del icono
+  padding: 10px 10px 10px 30px;
   display: block;
   width: 100%;
   border: 2px solid $secondary-color;
+  border-radius: 4px;
   background-color: transparent;
   color: $text-color;
-  border-radius: 4px;
   transition: border-color 0.3s ease;
 
   &:focus {
     outline: none;
     border-color: $primary-color;
+  }
+
+  &.is-invalid {
+    border-color: $accent-color;
   }
 }
 
@@ -76,7 +86,7 @@ form {
 
 .btn-primary {
   background-color: $primary-color;
-  color: #fff;
+  color: $form-color;
   border: none;
   border-radius: 5px;
   padding: 10px 20px;
@@ -85,11 +95,20 @@ form {
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: darken($primary-color, 10%);
+    background-color: lighten($primary-color, 10%);
   }
 }
 
 .btn-block {
   display: block;
   width: 100%;
+}
+
+.text-center {
+  text-align: center;
+
+  .text-decoration-none {
+    text-decoration: none;
+    color: $primary-color;
+  }
 }
