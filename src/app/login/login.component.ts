@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
   const authToken = this.cookieService.get('authToken');
   if (authToken) {
     // Si la cookie existe, redirige al usuario a otra ruta
-    this.router.navigate(['/cines/index']);
+    this.router.navigate(['/product-list/index']);
   } else {
     // Si la cookie no existe, inicializa el formulario de login
     this.loginForm = this.formBuilder.group({

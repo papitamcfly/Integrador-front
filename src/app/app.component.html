@@ -10,29 +10,11 @@
 
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" *ngIf="hasAuthToken" routerLink="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Combos
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" *ngIf="rolId == 3" routerLink="/combos/create">Crear Combo</a></li>
-            <li><a class="dropdown-item" routerLink="/combos/index">Ver Combos</a></li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" *ngIf="hasAuthToken" routerLink="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Generos
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" *ngIf="rolId != 1" routerLink="/generos/create">Crear Genero</a></li>
             <li><a class="dropdown-item" routerLink="/generos/index">Ver Generos</a></li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" *ngIf="hasAuthToken" routerLink="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Productos
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" *ngIf="rolId == 3" routerLink="/productos/create">Crear Producto</a></li>
-            <li><a class="dropdown-item" routerLink="/productos/index">Ver Productos</a></li>
           </ul>
         </li>
         <li><a class="nav-item" *ngIf="rolId == 3" routerLink="/product-list/index">productos</a></li>

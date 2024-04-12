@@ -15,7 +15,7 @@ export class RolGuard implements CanActivate {
     const rol = parseInt(this.cookieService.getCookie('rol') || '0', 10);
 
     if (rol != 3) {
-      return this.router.createUrlTree(['/cines/index']);
+      return this.router.createUrlTree(['/product-list/index']);
     }
 
     return true;

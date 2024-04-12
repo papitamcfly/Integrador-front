@@ -43,6 +43,12 @@ export class AppComponent implements OnInit {
     event.preventDefault();
     const confirmLogout = confirm('¿Estás seguro de que deseas cerrar la sesión?');
     if (confirmLogout) {
+      localStorage.removeItem('authToken');
+      this.cookieService.delete('authToken');
+      this.cookieService.delete('rol');
+      this.rolId = 0;
+      this.changeDetectorRef.detectChanges();
+      window.location.reload();
       this.loginService.logoutUser().subscribe(
         (response: any) => {
           console.log(response.message);
@@ -52,13 +58,11 @@ export class AppComponent implements OnInit {
           console.error('Error al cerrar la sesión:', error);
         }
       );
-      localStorage.removeItem('authToken');
-      this.cookieService.delete('authToken');
-      this.cookieService.delete('rol');
-      this.rolId = 0;
-      this.changeDetectorRef.detectChanges();
-      window.location.reload();
-      
     }
+    
+  }
+  ngOnDestroy() {
+    this.cookieService.delete('authToken');
+    this.cookieService.delete('rol');
   }
 }

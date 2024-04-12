@@ -51,7 +51,8 @@ export class CartComponent{
           this.cart = [];
           alert('Orden realizada con éxito');
         },
-        error => alert('Error al realizar la orden')
+        error => {alert('Error al realizar la orden'),
+        console.error(error);}
       );
   }
 }
