@@ -12,7 +12,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
  templateUrl: './app.component.html',
  standalone: true,
  imports: [RouterOutlet,RouterLink,RouterLinkActive, CommonModule],
- styleUrls: ['./app.component.css']
+ styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
  title = 'Roborestaurant';
