@@ -1,18 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from './cart.service';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms'; 
+import { FormsModule } from '@angular/forms';
 import { CartItem } from '../interfaces/cart-item';
 import { OrderService } from './order.service';
 import { ProductList } from '../interfaces/product-list';
+
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './cart.component.html',
-  styleUrl: './cart.component.css'
+  styleUrls: ['./cart.component.scss']
 })
-export class CartComponent{
+export class CartComponent {
   cart: CartItem[] = [];
 
   constructor(
@@ -22,8 +23,8 @@ export class CartComponent{
     this.cart = this.cartService.getCart();
   }
 
-  addToCart(product: ProductList,cantidad:number): void {
-    this.cartService.addToCart(product,cantidad);
+  addToCart(product: ProductList, cantidad: number): void {
+    this.cartService.addToCart(product, cantidad);
     this.cart = this.cartService.getCart();
   }
 
@@ -38,12 +39,8 @@ export class CartComponent{
 
   placeOrder(): void {
     const order = {
-      items: this.cart.map(item => ({
-        product_id: item.product.id,
-        quantity: item.quantity
-      }))
+      items: this.cart.map(item => ({ product_id: item.product.id, quantity: item.quantity }))
     };
-
     this.orderService.createOrder(order)
       .subscribe(
         () => {
@@ -51,8 +48,20 @@ export class CartComponent{
           this.cart = [];
           alert('Orden realizada con éxito');
         },
-        error => {alert('Error al realizar la orden'),
-        console.error(error);}
+        error => {
+          alert('Error al realizar la orden'),
+          console.error(error);
+        }
       );
+  }
+
+  decreaseQuantity(index: number): void {
+    this.cartService.decreaseQuantity(index);
+    this.cart = this.cartService.getCart();
+  }
+
+  increaseQuantity(index: number): void {
+    this.cartService.increaseQuantity(index);
+    this.cart = this.cartService.getCart();
   }
 }
