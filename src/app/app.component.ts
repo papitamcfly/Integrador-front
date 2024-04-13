@@ -26,9 +26,7 @@ export class AppComponent implements OnInit {
   private changeDetectorRef: ChangeDetectorRef) {}
 
   ngOnInit(): void {
-    const authToken = localStorage.getItem('authToken');
     const cAuthToken = this.cookieService.getCookie('authToken');
-    this.hasAuthToken = !!authToken; // Convierte el valor a booleano
     this.hascAuthToken = !!cAuthToken;
 
     if (this.hascAuthToken) {
