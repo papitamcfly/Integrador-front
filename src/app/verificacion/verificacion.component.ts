@@ -12,7 +12,7 @@ import { ChangeDetectorRef } from '@angular/core';
 @Component({
  selector: 'app-verificacion',
  templateUrl: './verificacion.component.html',
- styleUrls: ['./verificacion.component.css'],
+ styleUrls: ['./verificacion.component.scss'],
  standalone: true,
  imports: [ReactiveFormsModule, CommonModule, RouterLink, RouterLinkActive],
  animations: [

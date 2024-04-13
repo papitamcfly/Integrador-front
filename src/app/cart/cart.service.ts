@@ -1,22 +1,19 @@
 import { Injectable } from '@angular/core';
 import { ProductList } from '../interfaces/product-list';
 import { CartItem } from '../interfaces/cart-item';
+
 @Injectable({
   providedIn: 'root'
 })
-export class CartService  {
+export class CartService {
   private cart: CartItem[] = [];
 
-  addToCart(product: ProductList,cantidad:number): void {
+  addToCart(product: ProductList, cantidad: number): void {
     const existingCartItem = this.cart.find(item => item.product.id === product.id);
-
     if (existingCartItem) {
-      existingCartItem.quantity += cantidad
+      existingCartItem.quantity += cantidad;
     } else {
-      const cartItem: CartItem = {
-        product: product,
-        quantity: cantidad
-      };
+      const cartItem: CartItem = { product: product, quantity: cantidad };
       this.cart.push(cartItem);
     }
   }
@@ -39,5 +36,17 @@ export class CartService  {
 
   clearCart(): void {
     this.cart = [];
+  }
+
+  decreaseQuantity(index: number): void {
+    const item = this.cart[index];
+    if (item.quantity > 1) {
+      item.quantity--;
+    }
+  }
+
+  increaseQuantity(index: number): void {
+    const item = this.cart[index];
+    item.quantity++;
   }
 }
