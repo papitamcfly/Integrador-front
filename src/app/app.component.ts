@@ -1,6 +1,6 @@
 import { Component, OnInit, importProvidersFrom } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CookieService } from 'ngx-cookie-service';
+import { CookieService } from './cookies.service';
 import { LoginService } from './login/login.service';
 import {RouterLink, RouterLinkActive, RouterOutlet, Router} from "@angular/router";
 import { ChangeDetectorRef } from '@angular/core';
@@ -27,12 +27,12 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     const authToken = localStorage.getItem('authToken');
-    const cAuthToken = this.cookieService.get('authToken');
+    const cAuthToken = this.cookieService.getCookie('authToken');
     this.hasAuthToken = !!authToken; // Convierte el valor a booleano
     this.hascAuthToken = !!cAuthToken;
 
-    if (this.hasAuthToken && this.hascAuthToken) {
-      this.rolId = parseInt(this.cookieService.get('rol') || '0', 10);
+    if (this.hascAuthToken) {
+      this.rolId = parseInt(this.cookieService.getCookie('rol') || '0', 10);
     } else {
       this.rolId = 0;
     }
@@ -44,8 +44,8 @@ export class AppComponent implements OnInit {
     const confirmLogout = confirm('¿Estás seguro de que deseas cerrar la sesión?');
     if (confirmLogout) {
       localStorage.removeItem('authToken');
-      this.cookieService.delete('authToken');
-      this.cookieService.delete('rol');
+      this.cookieService.deleteFCookie('authToken');
+      this.cookieService.deleteFCookie('rol');
       this.rolId = 0;
       this.changeDetectorRef.detectChanges();
       window.location.reload();
@@ -62,7 +62,7 @@ export class AppComponent implements OnInit {
     
   }
   ngOnDestroy() {
-    this.cookieService.delete('authToken');
-    this.cookieService.delete('rol');
+    this.cookieService.deleteFCookie('authToken');
+    this.cookieService.deleteFCookie('rol');
   }
 }
