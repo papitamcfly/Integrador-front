@@ -1,0 +1,14 @@
+<div>
+    <nav>
+      <button (click)="showComponent = 'ordenes'">Órdenes Pendientes</button>
+      <button (click)="showComponent = 'ordenesEnProceso'">Órdenes en proceso</button>
+    </nav>
+  
+    <ng-container *ngIf="showComponent === 'ordenes'">
+      <app-ordenes></app-ordenes>
+    </ng-container>
+  
+    <ng-container *ngIf="showComponent === 'ordenesEnProceso'">
+      <app-ordenes-en-proceso></app-ordenes-en-proceso>
+    </ng-container>
+  </div>

@@ -43,5 +43,20 @@ export const routes: Routes = [
         loadChildren: () => import('./cart/cart.module').then(m => m.CartModule),
         canActivate: [LoginGuard]
       },
+      {
+        path: 'ordenes/pendientes',
+        loadChildren: () => import('./ordenes/ordenes-pendientes/ordenes-pendientes.module').then(m => m.OrdenesPendientesModule),
+        canActivate: [LoginGuard]
+      },
+      {
+      path: 'ordenes/preparando',
+      loadChildren: () => import('./ordenes/ordenes-en-proceso/ordenes-en-proceso.module').then(m => m.OrdenesEnProcesoModule),
+      canActivate: [LoginGuard]
+    },
+    {
+      path: 'ordenes/all-orders',
+      loadChildren: () => import('./ordenes/all-orders/all-orders.module').then(m => m.AllOrdersModule),
+      canActivate: [LoginGuard]
+    },
     { path: '', redirectTo: '/login', pathMatch: 'full' },
 ];

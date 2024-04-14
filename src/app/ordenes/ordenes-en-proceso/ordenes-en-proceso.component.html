@@ -1,0 +1,35 @@
+<div>
+    <h1>Preparando</h1>
+      </div>
+      
+      <div *ngIf="orders.length === 0">
+        <p>No hay órdenes disponibles con el estado seleccionado.</p>
+      </div>
+      
+      <div *ngIf="orders.length > 0">
+        <h2>Lista de Órdenes</h2>
+        <ul>
+          <li *ngFor="let order of orders">
+    
+            <div *ngFor="let orders of order.ordenes">
+              <h3>Orden #{{ orders.id }}</h3>
+              <p>Status: {{ orders.status }}</p>
+              <p>Hora: {{ orders.hora }}</p>
+              <h4>Productos</h4>
+              <ul>
+                <li *ngFor="let producto of orders.productos">
+                  <div>
+                    <img [src]="producto.img" alt="{{ producto.name }}" style="max-width: 100px;">
+                    <h5>{{ producto.name }}</h5>
+                    <p>{{ producto.description }}</p>
+                    <p>Precio: {{ producto.price}}</p>
+                    <p>Cantidad: {{ getProductQuantity(orders, producto.id) }}</p>
+                  </div>
+                </li>
+              </ul>
+              <button (click)="changestatus(orders.id ,orders)">siguiente</button>
+            </div>
+           
+          </li>
+        </ul>
+      </div>

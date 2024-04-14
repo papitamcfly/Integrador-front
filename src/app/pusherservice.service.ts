@@ -13,11 +13,15 @@ export class PusherserviceService {
       forceTLS: true
     });
 
-    this.pusher.subscribe('genero-channel');
   }
 
   subscribeToGeneroUpdatedEvent(callback: (data: any) => void): void {
     const channel = this.pusher.subscribe('genero-channel');
+    channel.bind('GeneroActualizado', callback);
+  }
+
+  subscribeToOrderEvent(callback: (data: any) => void): void {
+    const channel = this.pusher.subscribe('Orderpend-channel');
     channel.bind('GeneroActualizado', callback);
   }
 }

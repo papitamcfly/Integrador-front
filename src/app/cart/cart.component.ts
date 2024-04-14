@@ -3,8 +3,9 @@ import { CartService } from './cart.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CartItem } from '../interfaces/cart-item';
-import { OrderService } from './order.service';
+import { OrderService } from '../ordenes/order.service';
 import { ProductList } from '../interfaces/product-list';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -18,7 +19,8 @@ export class CartComponent {
 
   constructor(
     private cartService: CartService,
-    private orderService: OrderService
+    private orderService: OrderService,
+    private router:Router,
   ) {
     this.cart = this.cartService.getCart();
   }
