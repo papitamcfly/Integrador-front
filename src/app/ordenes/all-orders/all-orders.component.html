@@ -1,14 +1,24 @@
 <div>
     <nav>
-      <button (click)="showComponent = 'ordenes'">Órdenes Pendientes</button>
+      <button (click)="showComponent = 'pendientes'">Órdenes Pendientes</button>
       <button (click)="showComponent = 'ordenesEnProceso'">Órdenes en proceso</button>
+      <button (click)="showComponent = 'ordenescanceladas'">Órdenes canceladas</button>
+      <button (click)="showComponent = 'ordenesentregadas'">Órdenes entregadas</button>
     </nav>
   
-    <ng-container *ngIf="showComponent === 'ordenes'">
+    <ng-container *ngIf="showComponent === 'pendientes'">
       <app-ordenes></app-ordenes>
     </ng-container>
   
     <ng-container *ngIf="showComponent === 'ordenesEnProceso'">
       <app-ordenes-en-proceso></app-ordenes-en-proceso>
     </ng-container>
+      
+    <ng-container *ngIf="showComponent === 'ordenescanceladas'">
+       <app-ordenes-rechazadas></app-ordenes-rechazadas>
+    </ng-container>
+          
+    <ng-container *ngIf="showComponent === 'ordenesentregadas'">
+<app-ordenes-terminadas></app-ordenes-terminadas>
+   </ng-container>
   </div>

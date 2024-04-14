@@ -41,10 +41,9 @@ export class OrdenesComponent implements OnInit {
     const orderDetail = order.detalles.find(detail => detail.product_id === productId);
     return orderDetail ? orderDetail.quantity : 0;
   }
-  changestatus(id:number,orders:Ordenes)
+  changestatus(id:number,estado:string,orders:Ordenes)
   {
 
-      let estado: string = "preparando"
       this.orderservice.changestatus(id, estado,orders).subscribe(
         response=>{
           console.log('genero editado con exito');

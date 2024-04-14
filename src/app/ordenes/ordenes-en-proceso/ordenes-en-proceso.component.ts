@@ -45,7 +45,7 @@ export class OrdenesEnProcesoComponent {
   changestatus(id:number,orders:Ordenes)
   {
 
-      let estado: string = "entregando"
+      let estado: string = "entregada"
       this.orderservice.changestatus(id, estado,orders).subscribe(
         response=>{
           console.log('genero editado con exito');

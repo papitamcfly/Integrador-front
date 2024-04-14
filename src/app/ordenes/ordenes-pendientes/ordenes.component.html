@@ -13,6 +13,7 @@
 
         <div *ngFor="let orders of order.ordenes">
           <h3>Orden #{{ orders.id }}</h3>
+          <p>Fecha: {{orders.fecha}}</p>
           <p>Status: {{ orders.status }}</p>
           <p>Hora: {{ orders.hora }}</p>
           <h4>Productos</h4>
@@ -27,7 +28,8 @@
               </div>
             </li>
           </ul>
-          <button (click)="changestatus(orders.id ,orders)">siguiente</button>
+          <button (click)="changestatus(orders.id, 'preparando',orders)">siguiente</button>
+          <button (click)="changestatus(orders.id,'cancelada', orders)">cancelar</button>
         </div>
        
       </li>
