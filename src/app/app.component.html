@@ -7,18 +7,9 @@
      </button>
      <div class="collapse navbar-collapse" id="navbarSupportedContent">
        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-         <li class="nav-item dropdown" *ngIf="hascAuthToken">
-           <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-             Generos
-           </a>
-           <ul class="dropdown-menu">
-             <li><a class="dropdown-item" *ngIf="rolId != 1" routerLink="/generos/create">Crear Genero</a></li>
-             <li><a class="dropdown-item" routerLink="/generos/index">Ver Generos</a></li>
-           </ul>
-         </li>
-         <li *ngIf="rolId == 3"><a class="nav-link" routerLink="/product-list/index">productos</a></li>
-         <li *ngIf="rolId == 3"><a class="nav-link" routerLink="/ordenes/all-orders">ordenes</a></li>
-         <li *ngIf="rolId == 3"><a class="nav-link" routerLink="/cart/index">carro</a></li>
+         <li *ngIf="hascAuthToken"><a class="nav-link" routerLink="/product-list/index">productos</a></li>
+         <li *ngIf="hascAuthToken"><a class="nav-link" routerLink="/ordenes/all-orders">ordenes</a></li>
+         <li *ngIf="hascAuthToken"><a class="nav-link" routerLink="/cart/index">carro</a></li>
        </ul>
        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
          <div class="buttonbox">

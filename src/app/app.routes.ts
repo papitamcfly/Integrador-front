@@ -19,21 +19,6 @@ export const routes: Routes = [
         canActivate: [VerificacionGuard]
       },
       {
-        path: 'generos/create',
-        loadChildren: () => import('./generos/generos-store/generos-store.module').then(m => m.GenerosStoreModule),
-        canActivate: [LoginGuard, Userguard]
-      },
-      {
-        path: 'generos/index',
-        loadChildren: () => import('./generos/generos-index/generos-index.module').then(m => m.GenerosIndexModule),
-        canActivate: [LoginGuard]
-      },
-      {
-        path: 'generos/edit/:id',
-        loadChildren: () => import('./generos/generos-edit/generos-edit.module').then(m => m.GenerosEditModule),
-        canActivate: [LoginGuard, Userguard]
-      },
-      {
         path: 'product-list/index',
         loadChildren: () => import('./product-list/product-list.module').then(m => m.ProductListModule),
         canActivate: [LoginGuard]
