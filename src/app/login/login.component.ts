@@ -83,6 +83,7 @@ export class LoginComponent implements OnInit {
       },
       error => {
         console.error(error);
+        this.isLoading = false;
         alert('Algo salio mal, por favor intenta de nuevo');
       }
     );
