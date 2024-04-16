@@ -16,7 +16,8 @@ import { Router } from '@angular/router';
 })
 export class CartComponent {
   cart: CartItem[] = [];
-
+  Sendemail: boolean = false;
+  clientEmail: string = '';
   constructor(
     private cartService: CartService,
     private orderService: OrderService,
@@ -43,9 +44,13 @@ export class CartComponent {
     const order = {
       items: this.cart.map(item => ({ product_id: item.product.id, quantity: item.quantity }))
     };
+    console.log(order);
     this.orderService.createOrder(order)
       .subscribe(
         () => {
+          if (this.Sendemail) {
+            this.sendsend(order); //correoop
+          }
           this.cartService.clearCart();
           this.cart = [];
           alert('Orden realizada con éxito');
@@ -65,5 +70,31 @@ export class CartComponent {
   increaseQuantity(index: number): void {
     this.cartService.increaseQuantity(index);
     this.cart = this.cartService.getCart();
+  }
+  
+  onDownloadChange(event: any): void {
+    this.Sendemail = event.target.checked;
+    if (!event.target.checked) {
+      this.clientEmail = ''; // Reset email input if checkbox is unchecked
+    }
+  }
+  sendsend(order: any): void{
+    const orderWithEmail = {
+      ...order,
+      clientEmail: this.clientEmail
+    };
+    console.log(orderWithEmail);
+    this.orderService.sendClientEmail(orderWithEmail)
+      .subscribe(
+        () => {
+          console.log("Nice");
+          this.Sendemail = false; // Reset the flag
+          this.clientEmail = '';
+        },
+        error => {
+          alert('Error al realizar la orden'),
+          console.error(error);
+        }
+      );
   }
 }
