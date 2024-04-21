@@ -8,12 +8,12 @@ import { Rol } from '../interfaces/rol.interface';
   providedIn: 'root'
 })
 export class UsersService {
-  private apiUrl = 'http://localhost:8000/api/usuarios';
+  private apiUrl = 'http://3.23.185.139/api/usuarios';
 
   constructor(private http: HttpClient) { }
 
   indexroles(): Observable<Rol[]> {
-    return this.http.get<Rol[]>('http://localhost:8000/api/roles');
+    return this.http.get<Rol[]>('http://3.23.185.139/api/roles');
   }
 
   indexuser(): Observable<User[]> {
