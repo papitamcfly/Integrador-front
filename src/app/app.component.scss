@@ -11,11 +11,17 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: $background-color;
   color: $primary-color;
+  padding-top: 56px; // Ajusta este valor según el alto de tu navbar
 }
 
 /* Estilos para la barra de navegación */
 .navbar {
   background-color: $navbar-color;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1030;
 
   .navbar-brand {
     color: $text-color;
@@ -60,11 +66,15 @@ body {
   }
 }
 
-
 /* Estilos adicionales */
 .icon {
   width: 40px;
   height: 40px;
   border-radius: 30px;
   margin-right: 10px;
+}
+
+/* Estilos para el contenido principal */
+.main-content {
+  margin-top: 56px; // Ajusta este valor según el alto de tu navbar
 }

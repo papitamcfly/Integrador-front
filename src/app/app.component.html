@@ -1,37 +1,35 @@
-<nav class="navbar navbar-expand-lg navbar-dark">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
   <div class="container-fluid">
-     <img class="icon" src="https://pbs.twimg.com/profile_images/1724074562604744704/7OangAlw_400x400.jpg" alt="robotito">
-     <a class="navbar-brand text">Roborestaurant</a>
-     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-       <span class="navbar-toggler-icon"></span>
-     </button>
-     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-         <li *ngIf="hascAuthToken"><a class="nav-link" routerLink="/product-list/index">productos</a></li>
-         <li *ngIf="hascAuthToken"><a class="nav-link" routerLink="/ordenes/all-orders">ordenes</a></li>
-         <li *ngIf="hascAuthToken"><a class="nav-link" routerLink="/cart/index">carro</a></li>
-         <li *ngIf="hascAuthToken"><a class="nav-link" routerLink="/ingresos/base">Ingresos</a></li>
-         <li *ngIf="hascAuthToken"><a class="nav-link" routerLink="/productos/index">productos</a></li>
-       </ul>
-       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-         <div class="buttonbox">
-           <li class="nav-item" *ngIf="!hascAuthToken">
-             <a class="nav-link" routerLink="/login">Iniciar Sesión</a>
-           </li>
-         </div>
-         <div class="buttonbox">
-           <li class="nav-item" *ngIf="!hascAuthToken">
-             <a class="nav-link" routerLink="/register">Registrarse</a>
-           </li>
-         </div>
-         <div class="buttonbox" *ngIf="hascAuthToken">
-           <li class="nav-item">
-             <button class="nav-link" (click)="logOut($event)">Cerrar Sesión</button>
-           </li>
-         </div>
-       </ul>
-     </div>
+    <img class="icon" src="https://pbs.twimg.com/profile_images/1724074562604744704/7OangAlw_400x400.jpg" alt="robotito">
+    <a class="navbar-brand text">Roborestaurant</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li *ngIf="hascAuthToken"><a class="nav-link" routerLink="/product-list/index">productos</a></li>
+        <li *ngIf="hascAuthToken"><a class="nav-link" routerLink="/ordenes/all-orders">ordenes</a></li>
+        <li *ngIf="hascAuthToken"><a class="nav-link" routerLink="/cart/index">carro</a></li>
+      </ul>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <div class="buttonbox">
+          <li class="nav-item" *ngIf="!hascAuthToken">
+            <a class="nav-link" routerLink="/login">Iniciar Sesión</a>
+          </li>
+        </div>
+        <div class="buttonbox">
+          <li class="nav-item" *ngIf="!hascAuthToken">
+            <a class="nav-link" routerLink="/register">Registrarse</a>
+          </li>
+        </div>
+        <div class="buttonbox" *ngIf="hascAuthToken">
+          <li class="nav-item">
+            <button class="nav-link" (click)="logOut($event)">Cerrar Sesión</button>
+          </li>
+        </div>
+      </ul>
+    </div>
   </div>
- </nav>
+</nav>
  <router-outlet></router-outlet>
  

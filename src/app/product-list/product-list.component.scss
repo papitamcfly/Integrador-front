@@ -26,6 +26,7 @@ body {
   grid-template-columns: 65% 35%; // Cambio aquí
   gap: 2rem;
   width: 100%;
+  margin-top: 40px;
 }
 
 
@@ -92,4 +93,11 @@ body {
 .no-products {
   color: $secondary-color;
   font-size: 1.2rem;
+}
+
+.cart-section {
+  position: sticky;
+  top: 80px; // Ajusta este valor según la altura de tu barra de navegación y el espacio deseado
+  height: calc(100vh - 80px); // Ajusta este valor según la altura de tu barra de navegación y el espacio deseado
+  overflow-y: auto;
 }

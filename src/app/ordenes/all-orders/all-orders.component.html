@@ -1,24 +1,21 @@
-<div>
-    <nav>
-      <button (click)="showComponent = 'pendientes'">Órdenes Pendientes</button>
-      <button (click)="showComponent = 'ordenesEnProceso'">Órdenes en proceso</button>
-      <button (click)="showComponent = 'ordenescanceladas'">Órdenes canceladas</button>
-      <button (click)="showComponent = 'ordenesentregadas'">Órdenes entregadas</button>
-    </nav>
-  
-    <ng-container *ngIf="showComponent === 'pendientes'">
-      <app-ordenes></app-ordenes>
-    </ng-container>
-  
-    <ng-container *ngIf="showComponent === 'ordenesEnProceso'">
-      <app-ordenes-en-proceso></app-ordenes-en-proceso>
-    </ng-container>
-      
-    <ng-container *ngIf="showComponent === 'ordenescanceladas'">
-       <app-ordenes-rechazadas></app-ordenes-rechazadas>
-    </ng-container>
-          
-    <ng-container *ngIf="showComponent === 'ordenesentregadas'">
-<app-ordenes-terminadas></app-ordenes-terminadas>
-   </ng-container>
+<nav>
+  <button (click)="showComponent = 'pendientes'" class="nav-button">Pendientes</button>
+  <button (click)="showComponent = 'enProceso'" class="nav-button">En Proceso</button>
+  <button (click)="showComponent = 'canceladas'" class="nav-button">Canceladas</button>
+  <button (click)="showComponent = 'entregadas'" class="nav-button">Entregadas</button>
+</nav>
+
+<div [ngSwitch]="showComponent" class="grid-container">
+  <div *ngSwitchCase="'pendientes'" class="card">
+    <app-ordenes></app-ordenes>
   </div>
+  <div *ngSwitchCase="'enProceso'" class="card">
+    <app-ordenes-en-proceso></app-ordenes-en-proceso>
+  </div>
+  <div *ngSwitchCase="'canceladas'" class="card">
+    <app-ordenes-rechazadas></app-ordenes-rechazadas>
+  </div>
+  <div *ngSwitchCase="'entregadas'" class="card">
+    <app-ordenes-terminadas></app-ordenes-terminadas>
+  </div>
+</div>

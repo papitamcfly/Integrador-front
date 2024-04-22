@@ -1,36 +1,37 @@
-<div>
-    <h1>Preparando</h1>
-      </div>
-      
-      <div *ngIf="orders.length === 0">
-        <p>No hay órdenes disponibles con el estado seleccionado.</p>
-      </div>
-      
-      <div *ngIf="orders.length > 0">
-        <h2>Lista de Órdenes</h2>
-        <ul>
-          <li *ngFor="let order of orders">
-    
-            <div *ngFor="let orders of order.ordenes">
-              <h3>Orden #{{ orders.id }}</h3>
-              <p>Status: {{ orders.status }}</p>
-              <p>Fecha: {{orders.fecha}}</p>
-              <p>Hora: {{ orders.hora }}</p>
-              <h4>Productos</h4>
-              <ul>
-                <li *ngFor="let producto of orders.productos">
-                  <div>
-                    <img [src]="producto.img" alt="{{ producto.name }}" style="max-width: 100px;">
-                    <h5>{{ producto.name }}</h5>
-                    <p>{{ producto.description }}</p>
-                    <p>Precio: {{ producto.price}}</p>
-                    <p>Cantidad: {{ getProductQuantity(orders, producto.id) }}</p>
-                  </div>
-                </li>
-              </ul>
-              <button (click)="changestatus(orders.id ,orders)">siguiente</button>
+<div class="pos-container">
+  <h1>Preparando</h1>
+  <div *ngIf="orders.length === 0" class="no-orders">
+    <p>No hay órdenes disponibles con el estado seleccionado.</p>
+  </div>
+  <div *ngIf="orders.length > 0" class="orders-container">
+    <div class="order-grid">
+      <div class="order-card" *ngFor="let order of orders; let i=index">
+        <div *ngFor="let orders of order.ordenes" class="order-details">
+          <div class="order-header">
+            <h3>Orden #{{ orders.id }}</h3>
+            <div class="order-info">
+              <p><span>Status:</span> {{ orders.status }}</p>
+              <p><span>Fecha:</span> {{ orders.fecha }}</p>
+              <p><span>Hora:</span> {{ orders.hora }}</p>
             </div>
-           
-          </li>
-        </ul>
+          </div>
+          <h4>Productos</h4>
+          <div class="product-grid">
+            <div *ngFor="let producto of orders.productos" class="product-item">
+              <img [src]="producto.img" alt="{{ producto.name }}" class="product-img">
+              <div class="product-details">
+                <h5>{{ producto.name }}</h5>
+                <p>{{ producto.description }}</p>
+                <p><span>Precio:</span> {{ producto.price }}</p>
+                <p><span>Cantidad:</span> {{ getProductQuantity(orders, producto.id) }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="order-actions">
+            <button (click)="changestatus(orders.id, orders)">Siguiente</button>
+          </div>
+        </div>
       </div>
+    </div>
+  </div>
+</div>

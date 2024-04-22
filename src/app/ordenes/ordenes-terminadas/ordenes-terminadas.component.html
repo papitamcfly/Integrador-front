@@ -1,35 +1,37 @@
 <div>
-    <h1>Entregadas</h1>
-      </div>
-      
-      <div *ngIf="orders.length === 0">
-        <p>No hay órdenes disponibles con el estado seleccionado.</p>
-      </div>
-      
-      <div *ngIf="orders.length > 0">
-        <h2>Lista de Órdenes</h2>
-        <ul>
-          <li *ngFor="let order of orders">
-    
-            <div *ngFor="let orders of order.ordenes">
-              <h3>Orden #{{ orders.id }}</h3>
-              <p>Fecha: {{orders.fecha}}</p>
-              <p>Status: {{ orders.status }}</p>
-              <p>Hora: {{ orders.hora }}</p>
-              <h4>Productos</h4>
-              <ul>
-                <li *ngFor="let producto of orders.productos">
-                  <div>
-                    <img [src]="producto.img" alt="{{ producto.name }}" style="max-width: 100px;">
-                    <h5>{{ producto.name }}</h5>
-                    <p>{{ producto.description }}</p>
-                    <p>Precio: {{ producto.price}}</p>
-                    <p>Cantidad: {{ getProductQuantity(orders, producto.id) }}</p>
-                  </div>
-                </li>
-              </ul>
+  <h1>Entregadas</h1>
+</div>
+<div *ngIf="orders.length === 0">
+  <p>No hay órdenes disponibles con el estado seleccionado.</p>
+</div>
+<div *ngIf="orders.length > 0" class="orders-container">
+  <h2>Lista de Órdenes</h2>
+  <div class="order-grid">
+    <div *ngFor="let order of orders" class="order-card">
+      <div *ngFor="let orders of order.ordenes">
+        <div class="order-header">
+          <h3>Orden #{{ orders.id }}</h3>
+          <div class="order-info">
+            <p><span>Fecha:</span> {{orders.fecha}}</p>
+            <p><span>Status:</span> {{ orders.status }}</p>
+            <p><span>Hora:</span> {{ orders.hora }}</p>
+          </div>
+        </div>
+        <div class="order-details">
+          <h4>Productos</h4>
+          <div class="product-grid">
+            <div class="product-item" *ngFor="let producto of orders.productos">
+              <img [src]="producto.img" alt="{{ producto.name }}" class="product-img">
+              <div class="product-details">
+                <h5>{{ producto.name }}</h5>
+                <p>{{ producto.description }}</p>
+                <p><span>Precio:</span> {{ producto.price}}</p>
+                <p><span>Cantidad:</span> {{ getProductQuantity(orders, producto.id) }}</p>
+              </div>
             </div>
-           
-          </li>
-        </ul>
+          </div>
+        </div>
       </div>
+    </div>
+  </div>
+</div>
