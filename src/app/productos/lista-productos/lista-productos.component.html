@@ -1,0 +1,15 @@
+ <div>
+    <nav>
+      <button (click)="showComponent = 'activos'">prodcutos activos</button>
+      <button (click)="showComponent = 'inactivos'">productos inactivos</button>
+    </nav>
+  
+    <ng-container *ngIf="showComponent === 'activos'">
+<app-activados></app-activados>
+    </ng-container>
+  
+    <ng-container *ngIf="showComponent === 'inactivos'">
+    <app-desactivados></app-desactivados>
+    </ng-container>
+      
+  </div>

@@ -11,7 +11,26 @@ export class ProductService {
 
   constructor(private http: HttpClient) { }
 
-  getProducts(): Observable<ProductList[]> {
-    return this.http.get<ProductList[]>(this.apiUrl);
+  getProducts(estado:string): Observable<ProductList[]> {
+    return this.http.get<ProductList[]>(`${this.apiUrl}/${estado}`);
+  }
+
+  getProduct(id: number): Observable<ProductList> {
+    return this.http.get<ProductList>(`${this.apiUrl}/${id}`);
+  }
+
+  createProduct(producto:ProductList): Observable<ProductList> {
+    return this.http.post<ProductList>(this.apiUrl, producto);
+  }
+
+  updateProduct(id: number, formData: FormData): Observable<ProductList> {
+    return this.http.put<ProductList>(`${this.apiUrl}/${id}`, formData);
+  }
+
+  deleteProduct(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${id}`);
+  }
+  changestatus(id: number,estado:string): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${id}/${estado}`);
   }
 }

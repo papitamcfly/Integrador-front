@@ -9,6 +9,7 @@ export interface Ordenes {
   status: string;
   fecha?: string;
   hora?: string;
+  total:number;
   ordenes:Ordenes[];
   detalles: DetalleOrden[];
   productos: ProductList[];

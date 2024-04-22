@@ -40,9 +40,12 @@ export class CartComponent {
   }
 
   placeOrder(): void {
+    const total = this.getTotal();
     const order = {
-      items: this.cart.map(item => ({ product_id: item.product.id, quantity: item.quantity }))
+      items: this.cart.map(item => ({ product_id: item.product.id, quantity: item.quantity })),
+      total: total
     };
+  
     this.orderService.createOrder(order)
       .subscribe(
         () => {
@@ -51,7 +54,7 @@ export class CartComponent {
           alert('Orden realizada con éxito');
         },
         error => {
-          alert('Error al realizar la orden'),
+          alert('Error al realizar la orden');
           console.error(error);
         }
       );
