@@ -10,7 +10,7 @@ import { PusherserviceService } from '../../pusherservice.service';
   standalone: true,
   imports: [CommonModule,FormsModule],
   templateUrl: './ordenes.component.html',
-  styleUrl: './ordenes.component.css'
+  styleUrl: './ordenes.component.scss'
 })
 export class OrdenesComponent implements OnInit {
   orders: Ordenes[] = []

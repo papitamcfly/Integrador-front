@@ -11,7 +11,7 @@ import { PusherserviceService } from '../../pusherservice.service';
   standalone: true,
   imports: [CommonModule,FormsModule],
   templateUrl: './ordenes-en-proceso.component.html',
-  styleUrl: './ordenes-en-proceso.component.css'
+  styleUrl: './ordenes-en-proceso.component.scss'
 })
 export class OrdenesEnProcesoComponent {
   orders: Ordenes[] = []

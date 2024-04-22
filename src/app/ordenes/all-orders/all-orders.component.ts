@@ -9,7 +9,7 @@ import { OrdenesTerminadasComponent } from '../ordenes-terminadas/ordenes-termin
   standalone: true,
   imports: [OrdenesComponent, OrdenesEnProcesoComponent,CommonModule,OrdenesRechazadasComponent,OrdenesTerminadasComponent],
   templateUrl: './all-orders.component.html',
-  styleUrls: ['./all-orders.component.css']
+  styleUrls: ['./all-orders.component.scss']
 })
 export class AllOrdersComponent {
   showComponent:string = 'pendientes'
