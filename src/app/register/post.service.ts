@@ -7,7 +7,7 @@ import { User } from '../interfaces/user.interface';
   providedIn: 'root'
 })
 export class PostService {
-  private apiUrl = 'http://localhost:8000/api/auth/register';
+  private apiUrl = 'http://3.23.185.139/api/auth/register';
 
   constructor(private http: HttpClient) {}
  

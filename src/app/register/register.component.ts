@@ -63,6 +63,7 @@ export class RegisterComponent implements OnInit {
           this.router.navigate(['/login']);
         },
         error => {
+          this.isLoading = false;
           console.error(error);
           alert('Error al registrar la cuenta. Verifica tus datos e intenta nuevamente.');
         }
