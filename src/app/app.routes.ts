@@ -43,5 +43,10 @@ export const routes: Routes = [
       loadChildren: () => import('./ordenes/all-orders/all-orders.module').then(m => m.AllOrdersModule),
       canActivate: [LoginGuard]
     },
+    {
+      path: 'ingresos/base',
+      loadChildren: () => import('./ingresos/base-ingresos/ingresos.module').then(m => m.IngresosModule),
+      canActivate: [LoginGuard]
+    },
     { path: '', redirectTo: '/login', pathMatch: 'full' },
 ];

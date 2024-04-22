@@ -1,0 +1,19 @@
+<div>
+    <nav>
+      <button (click)="showComponent = 'PorDia'">Ingresos Por Dia</button>
+      <button (click)="showComponent = 'PorSemana'">Ingresos Por Semana</button>
+      <button (click)="showComponent = 'PorMes'">Ingresos Por Mes</button>
+    </nav>
+  
+    <ng-container *ngIf="showComponent === 'PorDia'">
+    
+    </ng-container>
+  
+    <ng-container *ngIf="showComponent === 'PorSemana'">
+      
+    </ng-container>
+      
+    <ng-container *ngIf="showComponent === 'PorMes'">
+       
+    </ng-container>
+  </div>
