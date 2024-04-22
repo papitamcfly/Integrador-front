@@ -1,0 +1,33 @@
+<div class="container">
+    <h1>Lista de Productos</h1>
+    <div class="row">
+      <div class="col-md-6">
+        <a routerLink="/products/create" class="btn btn-primary mb-3">Agregar Producto</a>
+      </div>
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Precio</th>
+          <th>Imagen</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td>{{ product.name }}</td>
+          <td>{{ product.description }}</td>
+          <td>{{ product.price | currency }}</td>
+          <td><img [src]="product.img" alt="{{ product.name }}" class="product-image"></td>
+          <td>
+            <button (click)="changestatus(product.id)" class="btn btn-primary">volver a activar</button>
+            <button (click)="deleteproduct(product.id)" class="btn btn-danger">Eliminar permanentemente</button>
+
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+

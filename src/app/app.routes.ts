@@ -48,5 +48,20 @@ export const routes: Routes = [
       loadChildren: () => import('./ingresos/base-ingresos/ingresos.module').then(m => m.IngresosModule),
       canActivate: [LoginGuard]
     },
+    {
+      path: 'productos/index',
+      loadChildren: () => import('./productos/lista-productos/lista-productos.module').then(m => m.ListaProductosModule),
+      canActivate: [LoginGuard,RolGuard]
+    },
+    {
+      path: 'productos/store',
+      loadChildren: () => import('./productos/crear-productos/crear-productos.module').then(m => m.CrearProductosModule),
+      canActivate: [LoginGuard,RolGuard]
+    },
+    {
+      path: 'productos/:id/edit',
+      loadChildren: () => import('./productos/editar-productos/editar-productos.module').then(m => m.EditarProductosModule),
+      canActivate: [LoginGuard,RolGuard]
+    },
     { path: '', redirectTo: '/login', pathMatch: 'full' },
 ];

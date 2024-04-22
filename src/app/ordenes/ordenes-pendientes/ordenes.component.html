@@ -28,6 +28,7 @@
               </div>
             </li>
           </ul>
+          <h2>Total: ${{orders.total}} </h2>
           <button (click)="changestatus(orders.id, 'preparando',orders)">siguiente</button>
           <button (click)="changestatus(orders.id,'cancelada', orders)">cancelar</button>
         </div>

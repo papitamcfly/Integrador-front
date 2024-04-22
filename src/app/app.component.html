@@ -11,7 +11,8 @@
          <li *ngIf="hascAuthToken"><a class="nav-link" routerLink="/ordenes/all-orders">ordenes</a></li>
          <li *ngIf="hascAuthToken"><a class="nav-link" routerLink="/cart/index">carro</a></li>
          <li *ngIf="hascAuthToken"><a class="nav-link" routerLink="/ingresos/base">Ingresos</a></li>
-        </ul>
+         <li *ngIf="hascAuthToken"><a class="nav-link" routerLink="/productos/index">productos</a></li>
+       </ul>
        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
          <div class="buttonbox">
            <li class="nav-item" *ngIf="!hascAuthToken">
