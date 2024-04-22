@@ -12,13 +12,12 @@
             <div class="card-body">
               <h3 class="card-title">{{ product.name }}</h3>
               <p class="card-text">{{ product.description }}</p>
-              <div class="input-group mb-3">
-                <input type="number" class="form-control" id="cantidadInput" name="cantidadInput" #cantidadInput value="1" min="1">
+              <div class="quantity-group">
                 <label for="cantidadInput">Cantidad:</label>
-                <input type="number" class="form-control" id="cantidadInput" name="cantidadInput" #cantidadInput value="1" min="1" placeholder="Ingrese la cantidad">
+                <input type="number" class="form-control" id="cantidadInput" name="cantidadInput" #cantidadInput value="1" min="1">
               </div>
               <p class="card-text">Precio: {{ product.price | currency }}</p>
-              <button class="btn btn-primary btn-block" (click)="addToCart(product, cantidadInput.value)">Agregar al carrito</button>
+              <button class="btn btn-primary" (click)="addToCart(product, cantidadInput.value)">Agregar al carrito</button>
             </div>
           </div>
         </div>
