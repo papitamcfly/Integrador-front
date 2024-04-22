@@ -24,4 +24,8 @@ export class PusherserviceService {
     const channel = this.pusher.subscribe('Orderpend-channel');
     channel.bind('GeneroActualizado', callback);
   }
+  subscribeToTypeUpdatedEvent(callback: (data: any) => void): void {
+    const channel = this.pusher.subscribe('type-channel');
+    channel.bind('TypeActualizado', callback);
+  }
 }
