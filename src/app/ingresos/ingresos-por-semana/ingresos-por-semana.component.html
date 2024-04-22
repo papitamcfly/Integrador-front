@@ -1,1 +1,25 @@
-<p>ingresos-por-semana works!</p>
+<div class="center">
+    <h1>Ingresos Por Semana</h1>
+      </div>
+      
+      <div *ngIf="ingresos.length === 0" class="center">
+        <p>No hay ingresos disponibles.</p>
+      </div>
+      
+      <div *ngIf="ingresos.length > 0" class="center">
+        <h2>Historia de Ingresos</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Ingresos</th>
+                  </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let ingreso of ingresos">
+                    <td>{{ ingreso._id }}</td>
+                    <td>{{ ingreso.totalIngresos }}</td>
+                </tr>
+            </tbody>
+        </table>
+      </div>
