@@ -9,7 +9,7 @@ import { IngresosPorSemanaComponent } from '../ingresos-por-semana/ingresos-por-
   standalone: true,
   imports: [CommonModule, IngresosPorDiaComponent, IngresosPorMesComponent, IngresosPorSemanaComponent],
   templateUrl: './ingresos.component.html',
-  styleUrl: './ingresos.component.css'
+  styleUrl: './ingresos.component.scss'
 })
 export class IngresosComponent {
   showComponent:string = 'PorDia'

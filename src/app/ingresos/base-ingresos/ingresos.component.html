@@ -1,19 +1,18 @@
-<div>
-    <nav>
-      <button (click)="showComponent = 'PorDia'">Ingresos Por Dia</button>
-      <button (click)="showComponent = 'PorSemana'">Ingresos Por Semana</button>
-      <button (click)="showComponent = 'PorMes'">Ingresos Por Mes</button>
-    </nav>
-  
-    <ng-container *ngIf="showComponent === 'PorDia'">
-      <app-ingresos-por-dia></app-ingresos-por-dia>
-    </ng-container>
-  
-    <ng-container *ngIf="showComponent === 'PorSemana'">
-      <app-ingresos-por-semana></app-ingresos-por-semana>
-    </ng-container>
-      
-    <ng-container *ngIf="showComponent === 'PorMes'">
-       <app-ingresos-por-mes></app-ingresos-por-mes>
-    </ng-container>
+<nav>
+  <button (click)="showComponent = 'PorDia'" class="nav-button">Ingresos Por Dia</button>
+  <button (click)="showComponent = 'PorSemana'" class="nav-button">Ingresos Por Semana</button>
+  <button (click)="showComponent = 'PorMes'" class="nav-button">Ingresos Por Mes</button>
+</nav>
+
+<div [ngSwitch]="showComponent" class="grid-container">
+  <div *ngSwitchCase="'PorDia'" class="card">
+    <app-ingresos-por-dia></app-ingresos-por-dia>
   </div>
+  <div *ngSwitchCase="'PorSemana'" class="card">
+    <app-ingresos-por-semana></app-ingresos-por-semana>
+  </div>
+  <div *ngSwitchCase="'PorMes'" class="card">
+    <app-ingresos-por-mes></app-ingresos-por-mes>
+  </div>
+</div>
+<div>

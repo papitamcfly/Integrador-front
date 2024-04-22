@@ -16,7 +16,7 @@ import { OnInit } from '@angular/core';
 })
 export class IngresosPorSemanaComponent {
   ingresos: Ingresos[] = []
-  type:string = 'PorMes'
+  type:string = 'PorSemana'
   constructor(private IngresosService: IngresosServiceService, private router: Router, private pusherService:PusherserviceService){}
   ngOnInit(){
     this.getIngresoByStatus(this.type)

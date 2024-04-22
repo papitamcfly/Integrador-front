@@ -17,8 +17,8 @@
             </thead>
             <tbody>
                 <tr *ngFor="let ingreso of ingresos">
-                    <td>{{ ingreso._id }}</td>
-                    <td>{{ ingreso.totalIngresos }}</td>
+                    <td>{{ ingreso._id.mes }}</td>
+                    <td>$ {{ ingreso.totalIngresos }}</td>
                 </tr>
             </tbody>
         </table>
