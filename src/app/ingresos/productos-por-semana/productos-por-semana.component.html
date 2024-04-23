@@ -1,0 +1,30 @@
+<div class="center">
+    <h1>Productos Por Semana</h1>
+      </div>
+      
+      <div *ngIf="productos.length === 0" class="center">
+        <p>No hay Productos disponibles.</p>
+      </div>
+      
+      <div *ngIf="productos.length > 0" class="center">
+        <div *ngFor="let productoGroup of productos" class="card">
+          <h3>{{ productoGroup._id }}</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Nombre de Producto</th>
+                <th>Ingresos Totales</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let product of productoGroup.productos">
+                <td>{{ product.producto }}</td>
+                <td>$ {{ product.totalIngresos }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <br />
+        </div>
+        <br />
+      </div>
+

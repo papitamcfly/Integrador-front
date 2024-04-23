@@ -1,18 +1,34 @@
 <nav>
-  <button (click)="showComponent = 'PorDia'" class="nav-button">Ingresos Por Dia</button>
-  <button (click)="showComponent = 'PorSemana'" class="nav-button">Ingresos Por Semana</button>
-  <button (click)="showComponent = 'PorMes'" class="nav-button">Ingresos Por Mes</button>
+  <button (click)="showComponent = 'PorDia';showIngresos = true; showProductos = false;" class="nav-button">Ingresos Por Dia</button>
+  <button (click)="showComponent = 'PorSemana';showIngresos = true; showProductos = false;" class="nav-button">Ingresos Por Semana</button>
+  <button (click)="showComponent = 'PorMes';showIngresos = true; showProductos = false;" class="nav-button">Ingresos Por Mes</button>
+  <button (click)="showComponent = 'PorDia';showIngresos = false; showProductos = true;" class="nav-button">Productos Por Dia</button>
+  <button (click)="showComponent = 'PorSemana';showIngresos = false; showProductos = true;" class="nav-button">Productos Por Semana</button>
+  <button (click)="showComponent = 'PorMes';showIngresos = false; showProductos = true;" class="nav-button">Productos Por Mes</button>
 </nav>
-
-<div [ngSwitch]="showComponent" class="grid-container">
-  <div *ngSwitchCase="'PorDia'" class="card">
-    <app-ingresos-por-dia></app-ingresos-por-dia>
-  </div>
-  <div *ngSwitchCase="'PorSemana'" class="card">
-    <app-ingresos-por-semana></app-ingresos-por-semana>
-  </div>
-  <div *ngSwitchCase="'PorMes'" class="card">
-    <app-ingresos-por-mes></app-ingresos-por-mes>
+<div *ngIf="showIngresos">
+  <div [ngSwitch]="showComponent" class="grid-container">
+    <div *ngSwitchCase="'PorDia'" class="card">
+      <app-ingresos-por-dia></app-ingresos-por-dia>
+    </div>
+    <div *ngSwitchCase="'PorSemana'" class="card">
+      <app-ingresos-por-semana></app-ingresos-por-semana>
+    </div>
+    <div *ngSwitchCase="'PorMes'" class="card">
+      <app-ingresos-por-mes></app-ingresos-por-mes>
+    </div>
   </div>
 </div>
-<div>
+<div *ngIf="showProductos">
+  <div [ngSwitch]="showComponent" class="grid-container">
+    <div *ngSwitchCase="'PorDia'" class="card">
+      <app-productos-por-dia></app-productos-por-dia>
+    </div>
+    <div *ngSwitchCase="'PorSemana'" class="card">
+      <app-productos-por-semana></app-productos-por-semana>
+    </div>
+    <div *ngSwitchCase="'PorMes'" class="card">
+      <app-productos-por-mes></app-productos-por-mes>
+    </div>
+  </div>
+</div>
