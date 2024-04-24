@@ -8,12 +8,12 @@ import { Rol } from '../interfaces/rol.interface';
   providedIn: 'root'
 })
 export class UsersService {
-  private apiUrl = 'http://3.23.185.139/api/usuarios';
+  private apiUrl = 'http://127.0.0.1:8000/api/usuarios';
 
   constructor(private http: HttpClient) { }
 
   indexroles(): Observable<Rol[]> {
-    return this.http.get<Rol[]>('http://3.23.185.139/api/roles');
+    return this.http.get<Rol[]>('http://127.0.0.1:8000/api/roles');
   }
 
   indexuser(): Observable<User[]> {
@@ -30,5 +30,9 @@ export class UsersService {
 
   deleteUser(id: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/${id}`);
+  }
+
+  createUser(userData: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}`, userData);
   }
 }
