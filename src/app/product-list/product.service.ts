@@ -7,7 +7,7 @@ import { ProductList } from '../interfaces/product-list';
 })
 export class ProductService {
 
-  private apiUrl = 'http://3.23.185.139/api/products';
+  private apiUrl = 'http://127.0.0.1:8000/api/products';
 
   constructor(private http: HttpClient) { }
 
@@ -19,8 +19,8 @@ export class ProductService {
     return this.http.get<ProductList>(`${this.apiUrl}/${id}`);
   }
 
-  createProduct(producto:ProductList): Observable<ProductList> {
-    return this.http.post<ProductList>(this.apiUrl, producto);
+  createProduct(formData: FormData) {
+    return this.http.post<any>('http://127.0.0.1:8000/api/products', formData);
   }
 
   updateProduct(id: number, formData: FormData): Observable<ProductList> {

@@ -1,111 +1,118 @@
-<div class="container login-container" [@fadeInOut]>
-    <div class="row justify-content-center">
-      <div class="col-md-6 mt-3">
-        <div class="card">
-          <div class="card-header">Registrar nuevo producto</div>
-          <div class="card-body">
-            <form [formGroup]="productStoreForm" (ngSubmit)="onSubmit()">
-              <div class="mb-3">
-                <label for="name">Nombre</label>
-                <input
-                  type="text"
-                  id="name"
-                  formControlName="name"
-                  class="form-control"
-                  [ngClass]="{ 'is-invalid': productStoreForm.get('name')?.touched && productStoreForm.get('name')?.invalid }"
-                  placeholder="Nombre"
-                />
-
-                <div *ngIf="productStoreForm.get('name')?.errors" class="invalid-feedback">
-                    <div *ngIf="productStoreForm.get('name')?.errors?.['required']">El campo nombre es obligatorio.</div>
-                    <div *ngIf="productStoreForm.get('name')?.errors?.['maxlength']">El nombre no puede exceder los 50 caracteres.</div>
-                    <div *ngIf="productStoreForm.get('name')?.errors?.['pattern']">El nombre solo puede contener letras y números.
-                    </div>
-                 </div>
-              </div>
-  
-              <div class="mb-3">
-                <label for="description">Descripción</label>
-                <input
-                  type="text"
-                  id="description"
-                  formControlName="description"
-                  class="form-control"
-                  [ngClass]="{
-                    'is-invalid':
-                      submitted && formControls['description'].errors
-                  }"
-                  placeholder="Descripción"
-                />
-                <div
-                  *ngIf="submitted && formControls['description'].errors"
-                  class="invalid-feedback"
-                >
-                  <div *ngIf="formControls['description'].errors['required']">
-                    La descripción es obligatoria.
-                  </div>
-                  <div *ngIf="formControls['description'].errors['maxlength']">
-                    La descripción no puede exceder los 50 caracteres.
-                  </div>
-                  <div *ngIf="errors.description">{{ errors.description[0] }}</div>
-                </div>
-              </div>
-  
-              <div class="mb-3">
-                <label for="price">Precio</label>
-                <input
-                  type="number"
-                  id="price"
-                  formControlName="price"
-                  class="form-control"
-                  [ngClass]="{
-                    'is-invalid':
-                      submitted && formControls['price'].errors
-                  }"
-                  placeholder="Precio"
-                />
-                <div
-                  *ngIf="submitted && formControls['price'].errors"
-                  class="invalid-feedback"
-                >
-                  <div *ngIf="formControls['price'].errors['required']">
-                    El precio es obligatorio.
-                  </div>
-                  <div *ngIf="formControls['price'].errors['min']">
-                    El precio no puede ser inferior a 0.01.
-                  </div>
-                  <div *ngIf="errors.price">{{ errors.price[0] }}</div>
-                </div>
-              </div>
-  
-              <div class="mb-3">
-                <label for="img">Imagen</label>
-                <input
-                  type="file"
-                  id="img"
-                  
-                  (change)="onFileChange($event)"
-                  class="form-control"
-                  [ngClass]="{
-                    'is-invalid':
-                      submitted && formControls['img'].errors
-                  }"
-                />
-                <div
-                  *ngIf="submitted && formControls['img'].errors"
-                  class="invalid-feedback"
-                >
-                  <div *ngIf="formControls['img'].errors['required']">
-                    La imagen es obligatoria.
-                  </div>
-                  <div *ngIf="errors.img">{{ errors.img[0] }}</div>
-                </div>
-              </div>
-  
-              <button type="submit" class="btn btn-primary">Crear producto</button>
-            </form>
+<div class="full-background">
+  <div class="card">
+    <div class="card-header">
+      <h2>Registrar nuevo producto</h2>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="productStoreForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="name">Nombre</label>
+          <div class="input-icon">
+            <i class="fas fa-pencil-alt"></i>
+          </div>
+          <input
+            type="text"
+            id="name"
+            formControlName="name"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': productStoreForm.get('name')?.touched && productStoreForm.get('name')?.invalid }"
+            placeholder="Nombre"
+          />
+          <div *ngIf="productStoreForm.get('name')?.errors" class="invalid-feedback">
+            <div *ngIf="productStoreForm.get('name')?.errors?.['required']">El campo nombre es obligatorio.</div>
+            <div *ngIf="productStoreForm.get('name')?.errors?.['maxlength']">El nombre no puede exceder los 50 caracteres.</div>
+            <div *ngIf="productStoreForm.get('name')?.errors?.['pattern']">El nombre solo puede contener letras y números.</div>
           </div>
         </div>
-      </div>
+
+        <div class="form-group">
+          <label for="description">Descripción</label>
+          <div class="input-icon">
+            <i class="fas fa-align-left"></i>
+          </div>
+          <input
+            type="text"
+            id="description"
+            formControlName="description"
+            class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                submitted && formControls['description'].errors
+            }"
+            placeholder="Descripción"
+          />
+          <div
+            *ngIf="submitted && formControls['description'].errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="formControls['description'].errors['required']">
+              La descripción es obligatoria.
+            </div>
+            <div *ngIf="formControls['description'].errors['maxlength']">
+              La descripción no puede exceder los 50 caracteres.
+            </div>
+            <div *ngIf="errors.description">{{ errors.description[0] }}</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="price">Precio</label>
+          <div class="input-icon">
+            <i class="fas fa-dollar-sign"></i>
+          </div>
+          <input
+            type="number"
+            id="price"
+            formControlName="price"
+            class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                submitted && formControls['price'].errors
+            }"
+            placeholder="Precio"
+          />
+          <div
+            *ngIf="submitted && formControls['price'].errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="formControls['price'].errors['required']">
+              El precio es obligatorio.
+            </div>
+            <div *ngIf="formControls['price'].errors['min']">
+              El precio no puede ser inferior a 0.01.
+            </div>
+            <div *ngIf="errors.price">{{ errors.price[0] }}</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="img">Imagen</label>
+          <div class="input-icon">
+            <i class="fas fa-image"></i>
+          </div>
+          <input
+            type="file"
+            id="img"
+            (change)="onFileChange($event)"
+            class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                submitted && formControls['img'].errors
+            }"
+          />
+          <div
+            *ngIf="submitted && formControls['img'].errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="formControls['img'].errors['required']">
+              La imagen es obligatoria.
+            </div>
+            <div *ngIf="errors.img">{{ errors.img[0] }}</div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Crear producto</button>
+      </form>
     </div>
   </div>
+</div>
