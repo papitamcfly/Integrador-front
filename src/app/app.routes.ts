@@ -63,5 +63,9 @@ export const routes: Routes = [
       loadChildren: () => import('./productos/editar-productos/editar-productos.module').then(m => m.EditarProductosModule),
       canActivate: [LoginGuard,RolGuard]
     },
+    {
+    path: 'all-logs',
+    loadChildren: () => import('./datalogs/datalogs.module').then(m => m.LogsModule),
+    canActivate: [LoginGuard, RolGuard]},
     { path: '', redirectTo: '/login', pathMatch: 'full' },
 ];

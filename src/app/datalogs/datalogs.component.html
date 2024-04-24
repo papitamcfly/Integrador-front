@@ -1,0 +1,21 @@
+<div class="container">
+    <h2>Logs de Datos</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Identificador</th>
+          <th>Valor</th>
+          <th>Mesero ID</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let log of Data">
+          <td>{{ log.ID }}</td>
+          <td>{{ log.identificador }}</td>
+          <td>{{ log.valor }}</td>
+          <td>{{ log.meseroID }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
