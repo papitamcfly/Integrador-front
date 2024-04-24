@@ -3,11 +3,12 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Ordenes } from '../interfaces/ordenes';
 import { Order } from '../interfaces/order';
+import { API_URL } from '../app.config';
 @Injectable({
   providedIn: 'root'
 })
 export class OrderService {
-  private apiUrl = 'http://3.23.185.139/api/orders';
+  private apiUrl = API_URL+'/orders';
   constructor(private http: HttpClient) { }
 
   createOrder(order: Order): Observable<any> {

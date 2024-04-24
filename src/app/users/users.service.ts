@@ -3,17 +3,18 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../interfaces/user.interface';
 import { Rol } from '../interfaces/rol.interface';
+import { API_URL } from '../app.config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
-  private apiUrl = 'http://127.0.0.1:8000/api/usuarios';
+  private apiUrl = API_URL+'/usuarios';
 
   constructor(private http: HttpClient) { }
 
   indexroles(): Observable<Rol[]> {
-    return this.http.get<Rol[]>('http://127.0.0.1:8000/api/roles');
+    return this.http.get<Rol[]>(API_URL+'/roles');
   }
 
   indexuser(): Observable<User[]> {

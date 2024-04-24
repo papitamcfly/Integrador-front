@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { API_URL } from '../app.config';
 
 interface LoginResponse {
   message: string;
@@ -11,7 +12,7 @@ interface LoginResponse {
   providedIn: 'root'
 })
 export class LoginService {
-  private apiUrl = 'http://3.23.185.139/api/auth';
+  private apiUrl = API_URL+'/auth';
  
 
   constructor(private http: HttpClient) { }

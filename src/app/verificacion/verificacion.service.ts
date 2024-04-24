@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { tap } from 'rxjs/operators';
 import { AuthInterceptor } from '../auth.interceptor';
+import { API_URL } from '../app.config';
 
 interface VerificationResponse {
   token: string;
@@ -14,7 +15,7 @@ interface VerificationResponse {
   providedIn: 'root'
 })
 export class VerificacionService {
-  private apiUrl = 'http://3.23.185.139/api/auth/verify-code';
+  private apiUrl = API_URL+'/auth/verify-code';
 
   constructor(private http: HttpClient, private cookieService: CookieService) { }
 
