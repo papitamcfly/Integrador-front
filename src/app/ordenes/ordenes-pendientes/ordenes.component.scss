@@ -5,41 +5,51 @@ $primary-color: #2d2d2d;
 $secondary-color: #757575;
 $accent-color: #ff6d00;
 $text-color: #333333;
-$canceled-color: #ff4d4d;
-$pending-color: #ffc107; // Nuevo color para resaltar las órdenes pendientes
 
 /* Estilos generales */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: $background-color;
   color: $text-color;
-  margin: 0;
+  margin-left: 20px;
   padding: 0;
 }
 
-.pos-container {
-  max-width: 100%;
-  margin: 0 auto;
+.page-header {
+  background-color: $primary-color;
+  color: $form-color;
   padding: 20px;
+  text-align: center;
+
+  h1 {
+    margin: 0;
+    font-size: 2.5rem;
+  }
 }
 
 .no-orders {
   text-align: center;
   color: $secondary-color;
   font-size: 1.2rem;
+  padding: 20px;
 }
 
 .orders-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+
+  h2 {
+    color: $primary-color;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
 }
 
 .order-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: 1fr; // Establece una sola columna de ancho completo
   gap: 20px;
-  width: 100%;
 }
 
 .order-card {
@@ -47,6 +57,7 @@ body {
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  width: 100%; // Establece el ancho al 100% del contenedor
 }
 
 .order-header {
@@ -74,13 +85,13 @@ body {
 
 h4 {
   color: $primary-color;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   margin: 15px 0 10px;
 }
 
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 10px;
 }
 
@@ -100,7 +111,7 @@ h4 {
 .product-details {
   h5 {
     color: $primary-color;
-    font-size: 1rem;
+    font-size: 1.1rem;
     margin-bottom: 5px;
   }
   p {
@@ -118,6 +129,7 @@ h4 {
   display: flex;
   justify-content: flex-end;
   margin-top: 20px;
+
   button {
     background-color: $primary-color;
     border: none;
@@ -128,29 +140,32 @@ h4 {
     padding: 8px 16px;
     transition: background-color 0.3s ease;
     margin-left: 10px;
+
     &:hover {
       background-color: lighten($primary-color, 5%);
       color: $accent-color;
     }
-  }
-}
 
-// Estilos adicionales para las órdenes pendientes
-.pending-order {
-  .order-header {
-    background-color: $pending-color;
-  }
-  .product-item {
-    background-color: lighten($pending-color, 30%);
-  }
-}
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba($accent-color, 0.3);
+    }
 
-// Estilos para las órdenes canceladas (mantenidos del código anterior)
-.canceled-order {
-  .order-header {
-    background-color: $canceled-color;
-  }
-  .product-item {
-    background-color: lighten($canceled-color, 35%);
+    &:active {
+      background-color: darken($primary-color, 5%);
+      transform: scale(0.98);
+    }
+
+    &:disabled {
+      background-color: $secondary-color;
+      color: $form-color;
+      cursor: not-allowed;
+      opacity: 0.6;
+
+      &:hover {
+        background-color: $secondary-color;
+        color: $form-color;
+      }
+    }
   }
 }

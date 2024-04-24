@@ -40,13 +40,14 @@ nav {
 
 .grid-container {
   display: grid;
-  grid-template-columns: 65% 35%;
-  gap: 2rem;
-  width: 100%;
+  place-items: center;
+  width: 100%; /* Adjust the width as needed */
+  margin: 0 auto; /* Center the container horizontally */
 }
 
 .card {
   background-color: $form-color;
+  width:70%;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
