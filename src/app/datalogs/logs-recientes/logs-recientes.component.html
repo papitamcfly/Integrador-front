@@ -1,0 +1,30 @@
+<!-- data-table.component.html -->
+<div class="content-container">
+    <div class="sensor-container">
+      <div class="sensor-item" *ngFor="let hola of sensores">
+        <h3 class="sensor-id"> {{ hola.id }}</h3>
+        <h3 class="sensor-desc">Descripción: {{ hola.Desc }}</h3>
+      </div>
+    </div>
+  
+    <div class="table-container">
+      <table class="data-table">
+        <thead>
+          <tr class="table-header">
+            <th>ID</th>
+            <th>Identificador</th>
+            <th>Valor</th>
+            <th>Mesero ID</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of datos" class="data-row">
+            <td>{{ item.data.ID }}</td>
+            <td>{{ item.data.identificador }}</td>
+            <td>{{ item.data.valor }}</td>
+            <td>{{ item.data.meseroID }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

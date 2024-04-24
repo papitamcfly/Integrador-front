@@ -1,0 +1,11 @@
+<!-- robot-list.component.html -->
+<h2 class="robot-list-title">Lista de Robots</h2>
+<ul class="robot-list">
+  <li *ngFor="let robot of robots" class="robot-item">
+    <div class="robot-info">
+      <h3 class="robot-name">{{ robot.Nombre }}</h3>
+      <!-- Agrega aquí cualquier otra información del robot que desees mostrar -->
+    </div>
+    <button (click)="navigateToRobotDetail(robot.Id)" class="robot-button">Ver Detalles</button>
+  </li>
+</ul>

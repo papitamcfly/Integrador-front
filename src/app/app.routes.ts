@@ -67,5 +67,15 @@ export const routes: Routes = [
     path: 'all-logs',
     loadChildren: () => import('./datalogs/datalogs.module').then(m => m.LogsModule),
     canActivate: [LoginGuard, RolGuard]},
+    {
+      path: 'meseros',
+      loadChildren: () => import('./datalogs/mostrar-meseros/mostrar-meseros.module').then(m => m.MostrarMeserosModule),
+      canActivate: [LoginGuard, RolGuard]
+    },
+    {
+      path: 'logsrecientes/:id',
+      loadChildren: () => import('./datalogs/logs-recientes/logs-recientes.module').then(m => m.LogsRecientesModule),
+      canActivate: [LoginGuard, RolGuard]
+    },
     { path: '', redirectTo: '/login', pathMatch: 'full' },
 ];
