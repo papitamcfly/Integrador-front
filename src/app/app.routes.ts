@@ -77,5 +77,10 @@ export const routes: Routes = [
       loadChildren: () => import('./datalogs/logs-recientes/logs-recientes.module').then(m => m.LogsRecientesModule),
       canActivate: [LoginGuard, RolGuard]
     },
+    {
+      path: 'meseros',
+      loadChildren: () => import('./datalogs/select-robot/select-robot.module').then(m => m.SelectRobotModule),
+      canActivate: [LoginGuard, RolGuard]
+    },
     { path: '', redirectTo: '/login', pathMatch: 'full' },
 ];
