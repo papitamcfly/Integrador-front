@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule,RouterLink,RouterLinkActive],
   templateUrl: './crear-productos.component.html',
-  styleUrl: './crear-productos.component.css'
+  styleUrl: './crear-productos.component.scss'
 })
 export class CrearProductosComponent implements OnInit {
   productStoreForm!: FormGroup;
