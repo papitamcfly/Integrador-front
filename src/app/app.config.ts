@@ -14,4 +14,4 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withInterceptors([AuthInterceptor])),
  ]
 };
-export const API_URL = 'http://3.23.185.139/api';
+export const API_URL = 'http://127.0.0.1:8000/api';
