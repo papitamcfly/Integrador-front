@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MeseroService } from '../mesero.service';
+import { Mesero } from '../../interfaces/mesero';
 
 @Component({
   selector: 'app-editar-mesero',
@@ -18,7 +19,7 @@ import { MeseroService } from '../mesero.service';
 export class EditarMeseroComponent implements OnInit {
   meseroForm!: FormGroup;
   id!: number;
-  nombre: string = '';
+  Nombre: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -29,7 +30,7 @@ export class EditarMeseroComponent implements OnInit {
 
   ngOnInit() {
     this.meseroForm = this.formBuilder.group({
-      nombre: ['', Validators.required]
+      Nombre: ['', Validators.required]
     });
 
     
@@ -38,7 +39,7 @@ export class EditarMeseroComponent implements OnInit {
       console.log(      this.id = +params['id']
     )
       this.meseroForm.patchValue({
-        nombre: params['Nombre']
+        Nombre: params['Nombre']
       });
     });
     this.buscarMesero();
@@ -46,26 +47,25 @@ export class EditarMeseroComponent implements OnInit {
 
   actualizarMesero() {
     if (this.meseroForm.valid) {
-      const nombre = this.meseroForm.get('nombre')?.value;
-      this.meseroService.actualizarMesero(this.id, nombre).subscribe({
-        next: () => {
-          console.log('Mesero actualizado exitosamente');
-          alert('Mesero actualizado exitosamente!');
+      this.meseroService.actualizarMesero(this.id, this.meseroForm.value).subscribe(
+        response => {
+          console.log('Mesero actualizado con éxito', response);
+          alert('Información actualizada con éxito');
           this.router.navigate(['/meseros']);
         },
-        error: (error) => {
+        error => {
           console.error('Error al actualizar el mesero:', error);
           alert('Error al actualizar el mesero');
-        }
-      });
-    }
+        }  
+      );
+      }
   }
 
   buscarMesero() {
     this.meseroService.buscarmesero(this.id).subscribe({
       next: (mesero) => {
-        this.nombre = mesero.Nombre; 
-        this.meseroForm.patchValue({ nombre: mesero.Nombre });
+        this.Nombre = mesero.Nombre; 
+        this.meseroForm.patchValue({ Nombre: mesero.Nombre });
  
       },
       error: (error) => {
@@ -74,5 +74,4 @@ export class EditarMeseroComponent implements OnInit {
       }
     });
   }
-
 }

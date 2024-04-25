@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Router, RouterModule } from '@angular/router';  // Make sure RouterModule is imported if you're using RouterLink or similar directives
 import { CommonModule } from '@angular/common';  // Import CommonModule
 import { MeseroService } from '../mesero.service';
+import { Mesero } from '../../interfaces/mesero';
 
 @Component({
   selector: 'app-crear-mesero',
@@ -26,24 +27,21 @@ export class CrearMeseroComponent implements OnInit {
 
   ngOnInit() {
     this.meseroForm = this.formBuilder.group({
-      nombre: ['', Validators.required]
+      Nombre: ['', Validators.required]
     });
   }
 
   crearMesero() {
     if (this.meseroForm.valid) {
-      const nombre = this.meseroForm.get('nombre')?.value;
-      this.meseroService.createMesero(nombre).subscribe({
-        next: (mesero) => {
-          console.log('Mesero creado:', mesero);
-          alert('Mesero creado exitosamente!');
-          this.router.navigate(['/meseros']);
+      console.log(this.meseroForm.value);
+      this.meseroService.createMesero(this.meseroForm.value).subscribe(
+        response => {
+          console.log('Mesero creado:', response);
+        alert('Mesero creado con exito.');
+        this.router.navigate(['/meseros']);
         },
-        error: (error) => {
-          console.error('Error al crear el mesero:', error);
-          alert('Error al crear el mesero');
-        }
-      });
+        error => console.error('Error al crear el mesero:', error)
+      );
     }
   }
 }

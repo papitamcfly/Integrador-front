@@ -1,25 +1,25 @@
 <div class="full-background">
-    <div class="card">
-        <h2>Registrar nuevo mesero</h2>
-      <form [formGroup]="meseroForm" (ngSubmit)="crearMesero()">
-        <div class="form-group">
-          <input
-            type="text"
-            id="nombre"
-            formControlName="nombre"
-            class="form-control"
-            placeholder="Nombre del mesero"
-            required
-          />
-          <div
-            class="invalid-feedback"
-            *ngIf="meseroForm.get('nombre')?.invalid && meseroForm.get('nombre')?.touched"
-          >El nombre es obligatorio.
-          </div>
+  <div class="card">
+      <h2>Registrar nuevo mesero</h2>
+    <form [formGroup]="meseroForm" (ngSubmit)="crearMesero()">
+      <div class="form-group">
+        <input
+          type="text"
+          id="Nombre"
+          formControlName="Nombre"
+          class="form-control"
+          placeholder="Nombre del mesero"
+          required
+        />
+        <div
+          class="invalid-feedback"
+          *ngIf="meseroForm.get('Nombre')?.invalid && meseroForm.get('Nombre')?.touched"
+        >El nombre es obligatorio.
         </div>
-        <button type="submit" class="btn-primary" [disabled]="meseroForm.invalid">
-          Crear Mesero
-        </button>
-      </form>
-    </div>
+      </div>
+      <button type="submit" class="btn-primary" [disabled]="meseroForm.invalid">
+        Crear Mesero
+      </button>
+    </form>
   </div>
+</div>
