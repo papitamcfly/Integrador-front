@@ -33,7 +33,7 @@ export class CrearMeseroComponent implements OnInit {
   crearMesero() {
     if (this.meseroForm.valid) {
       const nombre = this.meseroForm.get('nombre')?.value;
-      this.meseroService.crearMesero(nombre).subscribe({
+      this.meseroService.createMesero(nombre).subscribe({
         next: (mesero) => {
           console.log('Mesero creado:', mesero);
           alert('Mesero creado exitosamente!');
