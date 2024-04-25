@@ -1,5 +1,7 @@
 <!-- robot-list.component.html -->
-<h2 class="robot-list-title">Lista de Robots</h2>
+<h2 class="robot-list-title">Lista de Robots
+  <button (click)="agregarRobot()" class="robot-button-create">+ Agregar Robot</button>
+</h2>
 <ul class="robot-list">
   <li *ngFor="let robot of robots" class="robot-item">
     <div class="robot-info">
@@ -7,5 +9,7 @@
       <!-- Agrega aquí cualquier otra información del robot que desees mostrar -->
     </div>
     <button (click)="navigateToRobotDetail(robot.Id)" class="robot-button">Ver Detalles</button>
+    <button (click)="editRobot(robot.Id)" class="robot-button">Editar</button>
+    <button (click)="eliminateRobot(robot.Id)" class="robot-button-del">Eliminar</button>
   </li>
 </ul>

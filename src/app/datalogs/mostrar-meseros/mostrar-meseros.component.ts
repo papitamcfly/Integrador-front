@@ -31,7 +31,20 @@ export class MostrarMeserosComponent implements OnInit {
     );
   }
 
+  agregarRobot(): void {
+    this.router.navigate(['/logsrecientes']);
+  }
+
   navigateToRobotDetail(robotId: number): void {
     this.router.navigate(['/logsrecientes', robotId]);
+  }
+  editRobot(robotId: number): void {
+    this.router.navigate(['/logsrecientes', robotId]);
+  }
+  eliminateRobot(robotId: number): void {
+    const confirmEliminar = confirm('¿Estás seguro de que deseas eliminar este robot?');
+    if (confirmEliminar){
+      this.router.navigate(['/logsrecientes', robotId]);
+    }
   }
 }
