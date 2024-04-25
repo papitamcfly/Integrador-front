@@ -18,8 +18,8 @@
                 <div class="order-header">
                   <h3>Orden #{{ pedido.id }}</h3>
                   <div class="order-info">
-                    <p><span>Status:</span> {{ pedido.status }}</p>
                     <p><span>Fecha:</span> {{ pedido.fecha | date: 'mediumDate' }}</p>
+                    <p><span>Status:</span> {{ pedido.status }}</p>
                     <p><span>Hora:</span> {{ pedido.hora }}</p>
                   </div>
                 </div>

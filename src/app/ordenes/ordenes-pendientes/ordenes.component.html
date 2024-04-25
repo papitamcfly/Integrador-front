@@ -16,7 +16,7 @@
             <div class="order-header">
               <h3>Orden #{{ orders.id }}</h3>
               <div class="order-info">
-                <p><span>Fecha:</span> {{ orders.fecha }}</p>
+                <p><span>Fecha:</span> {{ orders.fecha | date: 'mediumDate'}}</p>
                 <p><span>Status:</span> {{ orders.status }}</p>
                 <p><span>Hora:</span> {{ orders.hora }}</p>
               </div>
