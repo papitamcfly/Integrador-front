@@ -3,18 +3,20 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import {DataService} from './data.service'
 import {Data} from '../interfaces/data'
 import { interval, Subscription } from 'rxjs';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-datalogs',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,FormsModule],
   templateUrl: './datalogs.component.html',
   styleUrl: './datalogs.component.css'
 })
 export class DatalogsComponent implements OnInit, OnDestroy {
   Data: Data[] = [];
+  filterValue: string = '';
+
   private pollingSubscription: Subscription | null = null;
   constructor(private dataService: DataService) { }
   ngOnInit(): void {
@@ -23,6 +25,11 @@ export class DatalogsComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy(): void {
     this.stopPolling();
+  }
+  get filteredData(): Data[] {
+    return this.filterValue
+      ? this.Data.filter(log => log.identificador.includes(this.filterValue))
+      : this.Data;
   }
   startPolling(): void {
     this.pollingSubscription = interval(5000)
