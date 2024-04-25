@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { API_URL } from '../app.config';
 import { Mesero } from '../interfaces/mesero';
 @Injectable({
   providedIn: 'root'
 })
 export class MeseroService {
-  private apiUrl = 'http://127.0.0.1:8000/api'; // URL base de la API
+  private apiUrl = API_URL; // URL base de la API
 
   constructor(private http: HttpClient) { }
 
