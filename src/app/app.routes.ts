@@ -87,5 +87,10 @@ export const routes: Routes = [
       loadChildren: () => import('./mesero/crear-mesero/crear-mesero.module').then(m => m.CrearMeseroModule),
       canActivate: [LoginGuard, RolGuard]
     },
+    {
+      path: 'meseros/editar/:id', 
+      loadChildren: () => import('./mesero/editar-mesero/editar-mesero.module').then(m => m.EditarMeseroModule),
+      canActivate: [LoginGuard, RolGuard]
+  },
     { path: '', redirectTo: '/login', pathMatch: 'full' },
 ];
