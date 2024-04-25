@@ -1,21 +1,23 @@
 <div class="container">
-    <h2>Logs de Datos</h2>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Identificador</th>
-          <th>Valor</th>
-          <th>Mesero ID</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let log of Data">
-          <td>{{ log.ID }}</td>
-          <td>{{ log.identificador }}</td>
-          <td>{{ log.valor }}</td>
-          <td>{{ log.meseroID }}</td>
-        </tr>
-      </tbody>
-    </table>
+  <h2>Logs de Datos</h2>
+  <div class="filter-container">
+    <label for="filterInput">Filtrar por identificador:</label>
+    <input type="text" id="filterInput" [(ngModel)]="filterValue">
   </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Identificador</th>
+        <th>Valor</th>
+        <th>Mesero ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let log of filteredData">
+        <td>{{ log.identificador }}</td>
+        <td>{{ log.valor }}</td>
+        <td>{{ log.meseroID }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
