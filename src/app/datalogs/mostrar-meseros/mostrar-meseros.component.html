@@ -4,12 +4,12 @@
 </h2>
 <ul class="robot-list">
   <li *ngFor="let robot of robots" class="robot-item">
-    <div class="robot-info">
-      <h3 class="robot-name">{{ robot.Nombre }}</h3>
+    <h3 class="robot-name">{{ robot.Nombre }}</h3>
       <!-- Agrega aquí cualquier otra información del robot que desees mostrar -->
+    <div class="button-group">
+      <button (click)="navigateToRobotDetail(robot.Id)" class="robot-button">Ver Detalles</button>
+      <button (click)="editRobot(robot.Id)" class="robot-button">Editar</button>
+      <button (click)="eliminateRobot(robot.Id)" class="robot-button-del">Eliminar</button>
     </div>
-    <button (click)="navigateToRobotDetail(robot.Id)" class="robot-button">Ver Detalles</button>
-    <button (click)="editRobot(robot.Id)" class="robot-button">Editar</button>
-    <button (click)="eliminateRobot(robot.Id)" class="robot-button-del">Eliminar</button>
   </li>
 </ul>

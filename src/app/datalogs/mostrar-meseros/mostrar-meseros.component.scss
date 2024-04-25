@@ -22,12 +22,17 @@
     border-radius: 8px;
     padding: 1.5rem;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
   }
   
   .robot-info {
     flex: 1;
+  }
+  .button-group {
+    display: flex;
+    justify-content: center;
   }
   
   .robot-name {
