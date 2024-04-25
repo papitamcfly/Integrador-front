@@ -3,6 +3,7 @@ export interface Data {
     ID: number;
     identificador: string;
     valor: number;
+    descripcion:string;
     meseroID: number;
 }
 

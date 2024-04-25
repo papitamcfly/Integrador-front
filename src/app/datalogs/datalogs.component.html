@@ -8,6 +8,7 @@
     <thead>
       <tr>
         <th>Identificador</th>
+        <th>Descripción</th>
         <th>Valor</th>
         <th>Mesero ID</th>
       </tr>
@@ -15,6 +16,7 @@
     <tbody>
       <tr *ngFor="let log of filteredData">
         <td>{{ log.identificador }}</td>
+        <td>{{ log.descripcion }}</td>
         <td>{{ log.valor }}</td>
         <td>{{ log.meseroID }}</td>
       </tr>

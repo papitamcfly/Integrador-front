@@ -41,8 +41,7 @@ export class LogsRecientesComponent implements OnInit, OnDestroy {
       )
       .subscribe(
         (data: Datos[]) => {
-          console.log(data)
-          this.datos = data;
+        this.datos = data;
         },
         (error: any) => {
           console.error('Error al obtener los datos:', error);

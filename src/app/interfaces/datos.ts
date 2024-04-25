@@ -8,5 +8,6 @@ export interface Datos {
       identificador: string;
       valor: number;
       meseroID: number;
+      descripcion:string
     }
 }
