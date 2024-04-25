@@ -29,4 +29,8 @@ export class DataService {
   getSensores(): Observable<Sensores[]> {
     return this.http.get<Sensores[]>(`${this.apiUrl}/sensores`);
   }
+  borrarRobot(idmesero:number){
+    const url = `${this.apiUrl}/deleteMesero/${idmesero}`;
+    return this.http.delete<Sensores[]>(url);
+  }
 }

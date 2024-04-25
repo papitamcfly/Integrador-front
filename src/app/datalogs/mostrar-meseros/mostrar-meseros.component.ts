@@ -32,19 +32,32 @@ export class MostrarMeserosComponent implements OnInit {
   }
 
   agregarRobot(): void {
-    this.router.navigate(['/logsrecientes']);
+    this.router.navigate(['/meseros/create']);
   }
 
   navigateToRobotDetail(robotId: number): void {
     this.router.navigate(['/logsrecientes', robotId]);
   }
   editRobot(robotId: number): void {
-    this.router.navigate(['/logsrecientes', robotId]);
+    this.router.navigate(['/meseros/editar', robotId]);
   }
   eliminateRobot(robotId: number): void {
     const confirmEliminar = confirm('¿Estás seguro de que deseas eliminar este robot?');
     if (confirmEliminar){
-      this.router.navigate(['/logsrecientes', robotId]);
-    }
+      this.robotService.borrarRobot(robotId).subscribe(
+        (response)=>{
+          alert('Mesero eliminado exitosamente.');
+          this.reloadPage();
+        },
+        (error)=>{
+          console.log(error);
+        }
+      )
+    };
+  }
+  reloadPage(): void {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/meseros']);
+    });
   }
 }
