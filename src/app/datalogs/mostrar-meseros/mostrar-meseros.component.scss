@@ -42,6 +42,7 @@
     background-color: #007bff;
     color: #fff;
     border: none;
+    margin-right: 5px;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -66,3 +67,17 @@
         background-color: #0056b3;
       }
     }
+    .robot-button-del {
+      padding: 0.5rem 1rem;
+      background-color: #ff0000;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    
+      &:hover {
+        background-color: #b30000;
+      }
+    }
+    
