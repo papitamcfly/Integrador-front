@@ -41,7 +41,7 @@ export class LogsRecientesComponent implements OnInit, OnDestroy {
       )
       .subscribe(
         (data: Datos[]) => {
-          console.log('datos actualizados')
+          console.log(data)
           this.datos = data;
         },
         (error: any) => {
