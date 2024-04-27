@@ -39,11 +39,10 @@ form {
 
     .input-icon {
       position: absolute;
-      margin-top: 15px;
-      left: 12px;
+      margin-top: 25px;
+      margin-right: 10px;
       transform: translateY(-50%);
-      color: $primary-color;// Añadido para centrar los iconos
-      align-items: center; // Añadido para centrar los iconos
+      color: $primary-color;
     }
 
     .form-control {

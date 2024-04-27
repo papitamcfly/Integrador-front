@@ -6,14 +6,15 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0"> 
         <li *ngIf="hascAuthToken"><a class="nav-link" routerLink="/product-list/index">Menu</a></li>
         <li *ngIf="hascAuthToken"><a class="nav-link" routerLink="/ordenes/all-orders">Ordenes</a></li>
         <li *ngIf="hascAuthToken"><a class="nav-link" routerLink="/ingresos/base">Ingresos</a></li>
-        <li *ngIf="hascAuthToken"><a class="nav-link" routerLink="/meseros">Meseros</a></li>
-        <li *ngIf="hascAuthToken"><a class="nav-link" routerLink="/all-logs">Logs</a></li>
-        <li *ngIf="hascAuthToken"><a class="nav-link" routerLink="/addadmin">Agregar Admin</a></li>
-      </ul>
+        <li *ngIf="hascAuthToken && rolId === 3"><a class="nav-link" routerLink="/meseros">Meseros</a></li>
+        <li *ngIf="hascAuthToken && rolId === 3"><a class="nav-link" routerLink="/all-logs">Logs</a></li>
+
+        <li *ngIf="hascAuthToken"><a class="nav-link" routerLink="/users/index">Usuarios</a></li>
+      </ul> 
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <div class="buttonbox">
           <li class="nav-item" *ngIf="!hascAuthToken">
@@ -26,11 +27,8 @@
           </li>
         </div>
         <div class="buttonbox">
-          <li class="nav-item" *ngIf="hascAuthToken">
-            <a class="nav-link" [routerLink]="['/user', userId]">
-              <i class="fas fa-user"></i>
-              Editar User
-            </a>
+          <li *ngIf="hascAuthToken && rolId === 3"><a class="nav-link" routerLink="/addadmin">
+            <i class="fas fa-user btn-icon"></i>Agregar admin</a>
           </li>
         </div>
         <div class="buttonbox" *ngIf="hascAuthToken">

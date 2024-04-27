@@ -102,6 +102,11 @@ export const routes: Routes = [
       loadChildren: () => import('./agregar-admin/agregar-admin.module').then(m => m.AgregarAdminModule),
       canActivate: [LoginGuard, RolGuard]
     },
+    {
+      path: 'users/index',
+      loadChildren: () => import('./users/users-index/users-index.module').then(m => m.UsersIndexModule),
+      canActivate: [LoginGuard]
+    },
   
     { path: '', redirectTo: '/login', pathMatch: 'full' },
 ];

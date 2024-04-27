@@ -1,13 +1,13 @@
 <div class="container login-container mt-3" [@fadeInOut]="cargando ? 'void' : 'in'">
   <div class="row justify-content-center" *ngIf="!cargando; else cargandoTemplate">
     <div class="mb-3">
-      <button [routerLink]="['/users/create']" class="btn btn-primary">
-        <i class="bi bi-plus-circle"></i> Crear nuevo usuario
-      </button>
+      <div class="center">
+        <h2>Usuarios</h2>
+      </div>
     </div>
 
     <table class="table">
-      <thead class="table-primary">
+      <thead class="table-dark">
         <tr>
           <th>Nombre</th>
           <th>Correo</th>
@@ -21,11 +21,11 @@
           <td>{{ user.email }}</td>
           <td>{{ getRolNombre(user.rol) }}</td>
           <td>
-            <button [routerLink]="['/users/edit', user.id]" class="btn btn-primary btn-spacing">
-              <i class="bi bi-pencil"></i>
+            <button *ngIf="rolId === 3" [routerLink]="['/user/', user.id]" class="btn btn-primary btn-spacing">
+              <i class="bi bi-pencil"></i> Editar
             </button>
-            <button (click)="confirmDelete(user.id)" class="btn btn-danger">
-              <i class="bi bi-trash"></i>
+            <button *ngIf="rolId === 3" (click)="confirmDelete(user.id)" class="btn btn-danger">
+              <i class="bi bi-trash"></i> Eliminar
             </button>
           </td>
         </tr>
