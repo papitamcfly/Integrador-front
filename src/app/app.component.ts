@@ -2,7 +2,7 @@ import { Component, OnInit, importProvidersFrom } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CookieService } from './cookies.service';
 import { LoginService } from './login/login.service';
-import {RouterLink, RouterLinkActive, RouterOutlet, Router} from "@angular/router";
+import {RouterLink, RouterLinkActive, RouterOutlet, Router, ActivatedRoute} from "@angular/router";
 import { ChangeDetectorRef } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -16,6 +16,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 })
 export class AppComponent implements OnInit {
  title = 'Roborestaurant';
+ userId: number = 0;
  rolId: number = 0;
  hasAuthToken: boolean = false;
  hascAuthToken: boolean = false;
@@ -23,6 +24,7 @@ export class AppComponent implements OnInit {
   private cookieService: CookieService,
   private router: Router,
   private loginService: LoginService,
+  private route: ActivatedRoute,
   private changeDetectorRef: ChangeDetectorRef) {}
 
   ngOnInit(): void {
@@ -31,6 +33,7 @@ export class AppComponent implements OnInit {
 
     if (this.hascAuthToken) {
       this.rolId = parseInt(this.cookieService.getCookie('rol') || '0', 10);
+      this.userId = Number(this.route.snapshot.paramMap.get('id'));
     } else {
       this.rolId = 0;
     }

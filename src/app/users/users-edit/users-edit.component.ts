@@ -29,6 +29,7 @@ export class UsersEditComponent {
 
  ngOnInit(): void {
     this.id = Number(this.route.snapshot.paramMap.get('id'));
+    console.log(this.id);
     this.loadUser();
     this.initForm();
     this.userService.indexroles().subscribe(roles => {
@@ -39,7 +40,7 @@ export class UsersEditComponent {
 
  private initForm(): void {
     this.usersEditForm = this.formBuilder.group({
-      name: ['', Validators.required],
+        name: ['', Validators.required],
         email: ['', [Validators.required, Validators.email]],
         rol: ['', Validators.required],
         
@@ -53,18 +54,25 @@ export class UsersEditComponent {
     }
 
 
- private loadUser(): void {
-  if (this.id) {
-     this.userService.getUserById(this.id).subscribe((user: User) => {
-       this.usersEditForm.patchValue({
-         name: user.name,
-         email: user.email,
-         rol: user.rol,
-       });
-       this.cargando = false;
-     });
-  }
- }
+    private loadUser(): void {
+      if (this.id) {
+        this.userService.getUserById(this.id).subscribe(
+          (user: User) => {
+            console.log('User loaded:', user);
+            this.usersEditForm.patchValue({
+              name: user.name,
+              email: user.email,
+              rol: user.rol,
+            });
+            this.cargando = false;
+          },
+          error => {
+            console.error('Error loading user:', error);
+            this.cargando = false;
+          }
+        );
+      }
+    }
 
  onSubmit(): void {
     if (this.usersEditForm.valid) {
@@ -73,7 +81,7 @@ export class UsersEditComponent {
         response=>{
           console.log('usuario editado con exito');
       alert('Informacion actualizada con exito');
-      this.router.navigate(['/users/index']);
+      this.router.navigate(['/product-list/index']);
         },
         error => console.error('Error al editar:', error)
       );

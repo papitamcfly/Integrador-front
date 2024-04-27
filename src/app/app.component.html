@@ -27,7 +27,7 @@
         </div>
         <div class="buttonbox">
           <li class="nav-item" *ngIf="hascAuthToken">
-            <a class="nav-link" routerLink="/user">
+            <a class="nav-link" [routerLink]="['/user', userId]">
               <i class="fas fa-user"></i>
               Editar User
             </a>

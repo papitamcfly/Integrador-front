@@ -93,7 +93,7 @@ export const routes: Routes = [
       canActivate: [LoginGuard, RolGuard]
     },
     {
-      path: 'user',
+      path: 'user/:id',
       loadChildren: () => import('./users/users-edit/users-edit.module').then(m => m.UsersEditModule),
       canActivate: [LoginGuard]
     },
