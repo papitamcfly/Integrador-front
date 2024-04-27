@@ -1,6 +1,4 @@
-<div class="container login-container" [@fadeInOut]>
-   <div class="row justify-content-center">
-      <div class="col-md-6 mt-3">
+<div class="full-background">
        <div class="card">
            <h4 class="card-header">Actualizar Usuario</h4>
            <div class="card-body">
@@ -41,12 +39,6 @@
                    <select class="form-select" formControlName="rol">
                        <option *ngFor="let rol of roles" [value]="rol.id">{{ rol.rol }}</option>
                       </select>
-                      
-                   <div *ngIf="usersEditForm.get('rol')?.errors" class="invalid-feedback">
-                      <div *ngIf="usersEditForm.get('rol')?.errors?.['required']">
-                        Por favor selecciona un rol.
-                      </div>
-                   </div>
                   </div>
                   <input type="hidden" formControlName="password">
                  <input type="hidden" formControlName="password_confirmation">
@@ -54,7 +46,4 @@
               </form>
            </div>
        </div>
-
-      </div>
-   </div>
 </div>

@@ -12,13 +12,14 @@ import { fadeInOutAnimations } from '../../animations';
   imports: [CommonModule, ReactiveFormsModule],
   animations: [fadeInOutAnimations],
   templateUrl: './users-edit.component.html',
-  styleUrl: './users-edit.component.css'
+  styleUrl: './users-edit.component.scss'
 })
 export class UsersEditComponent {
   usersEditForm!: FormGroup;
   id: number = 0;
   cargando: boolean = true;
-roles: Rol[] = []
+  roles: Rol[] = []
+  
  constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,

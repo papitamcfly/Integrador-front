@@ -91,6 +91,17 @@ export const routes: Routes = [
       path: 'meseros/editar/:id', 
       loadChildren: () => import('./mesero/editar-mesero/editar-mesero.module').then(m => m.EditarMeseroModule),
       canActivate: [LoginGuard, RolGuard]
-  },
+    },
+    {
+      path: 'user',
+      loadChildren: () => import('./users/users-edit/users-edit.module').then(m => m.UsersEditModule),
+      canActivate: [LoginGuard]
+    },
+    {
+      path: 'addadmin',
+      loadChildren: () => import('./agregar-admin/agregar-admin.module').then(m => m.AgregarAdminModule),
+      canActivate: [LoginGuard, RolGuard]
+    },
+  
     { path: '', redirectTo: '/login', pathMatch: 'full' },
 ];

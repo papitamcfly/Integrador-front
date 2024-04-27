@@ -1,0 +1,108 @@
+// Paleta de colores
+$background-color: #F7F7F7;
+$form-color: #FFFFFF;
+$primary-color: #2D2D2D;
+$secondary-color: #757575;
+$accent-color: #FF6D00;
+$text-color: #333333;
+
+/* Estilos generales */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: $background-color;
+  color: $text-color;
+}
+
+.full-background {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Estilos para la tarjeta de inicio de sesión */
+.card {
+  margin-top: 70px;
+  background-color: $form-color;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 500px;
+  text-align: center;
+}
+
+/* Estilos para el formulario */
+form {
+  padding: 30px;
+
+  .form-group {
+    position: relative;
+
+    .input-icon {
+      position: absolute;
+      margin-top: 15px;
+      left: 12px;
+      transform: translateY(-50%);
+      color: $primary-color;// Añadido para centrar los iconos
+      align-items: center; // Añadido para centrar los iconos
+    }
+
+    .form-control {
+      font-size: 16px;
+      padding: 10px 10px 10px 40px;
+      display: block;
+      width: 100%;
+      border: 2px solid $secondary-color;
+      border-radius: 4px;
+      background-color: transparent;
+      color: $text-color;
+      transition: border-color 0.3s ease;
+
+      &:focus {
+        outline: none;
+        border-color: $primary-color;
+      }
+
+      &.is-invalid {
+        border-color: $accent-color;
+      }
+    }
+
+    .invalid-feedback {
+      color: $accent-color;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+  }
+
+  .btn-primary {
+    display: block;
+    width: 100%;
+    padding: 10px 30px;
+    background-color: $primary-color;
+    color: $form-color;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: lighten($primary-color, 5%);
+      color: $accent-color;
+    }
+  }
+
+  .text-center {
+    text-align: center;
+
+    .text-decoration-none {
+      text-decoration: none;
+      color: $primary-color;
+    }
+  }
+
+  .mt-3 {
+    margin-top: 1rem;
+  }
+}
