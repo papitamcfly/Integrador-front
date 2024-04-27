@@ -1,0 +1,58 @@
+// Paleta de colores
+$background-color: #f7f7f7;
+$form-color: #ffffff;
+$primary-color: #2d2d2d;
+$secondary-color: #757575;
+$accent-color: #ff6d00;
+$text-color: #333333;
+
+/* Estilos generales */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: $background-color;
+  color: $text-color;
+}
+
+.grid-container {
+  display: grid;
+  place-items: center;
+  width: 100%; /* Adjust the width as needed */
+  margin: 0 auto; /* Center the container horizontally */
+}
+
+.card {
+  background-color: $form-color;
+  width:70%;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.center{
+    margin: 0 auto;
+    width: 70%; /* Adjust the width as needed */
+    text-align: center;
+}
+.space{
+    margin-top: 70px;
+}
+.tablex {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+    border-collapse: collapse;
+}
+
+.tablex th,
+.tablex td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+
+.tablex thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.tablex tbody + tbody {
+    border-top: 2px solid #dee2e6;
+}

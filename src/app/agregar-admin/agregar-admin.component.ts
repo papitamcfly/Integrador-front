@@ -24,4 +24,11 @@ export class AgregarAdminComponent implements OnInit{
     this.UsersServive.indexuser()
     .subscribe(users => this.users = users );
   }
+  determineRol(user: any) {
+    if (user.rol === 1) {
+      return 'Empleado';
+    } else {
+      return 'Admin';
+    }
+  }
 }
