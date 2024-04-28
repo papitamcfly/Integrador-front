@@ -26,11 +26,6 @@
             <a class="nav-link" routerLink="/register">Registrarse</a>
           </li>
         </div>
-        <div class="buttonbox">
-          <li *ngIf="hascAuthToken && rolId === 3"><a class="nav-link" routerLink="/addadmin">
-            <i class="fas fa-user btn-icon"></i>Agregar admin</a>
-          </li>
-        </div>
         <div class="buttonbox" *ngIf="hascAuthToken">
           <li class="nav-item">
             <button class="nav-link" (click)="logOut($event)">Cerrar Sesión</button>
