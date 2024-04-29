@@ -17,8 +17,9 @@
         >El nombre es obligatorio.
         </div>
       </div>
-      <button type="submit" class="btn-primary" [disabled]="meseroForm.invalid">
-        Crear Mesero
+      <button type="submit" class="btn-primary" [disabled]="meseroForm.invalid || isLoading">
+        <span *ngIf="!isLoading">Crear Mesero</span>
+        <span *ngIf="isLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
       </button>
     </form>
   </div>

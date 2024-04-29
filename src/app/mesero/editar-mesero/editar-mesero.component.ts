@@ -4,6 +4,7 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MeseroService } from '../mesero.service';
 import { Mesero } from '../../interfaces/mesero';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-editar-mesero',
@@ -14,12 +15,25 @@ import { Mesero } from '../../interfaces/mesero';
     RouterModule
   ],
   templateUrl: './editar-mesero.component.html',
-  styleUrls: ['./editar-mesero.component.scss']
+  styleUrls: ['./editar-mesero.component.scss'],
+  animations: [
+    trigger('fadeInOut', [
+      state('in', style({ opacity: 1 })),
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('500ms', style({ opacity: 1 }))
+      ]),
+      transition(':leave', [
+        animate('500ms', style({ opacity: 0 }))
+      ])
+    ])
+  ]
 })
 export class EditarMeseroComponent implements OnInit {
   meseroForm!: FormGroup;
   id!: number;
   Nombre: string = '';
+  isLoading = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -46,11 +60,13 @@ export class EditarMeseroComponent implements OnInit {
   }
 
   actualizarMesero() {
+    this.isLoading = true;
     if (this.meseroForm.valid) {
       this.meseroService.actualizarMesero(this.id, this.meseroForm.value).subscribe(
         response => {
           console.log('Mesero actualizado con éxito', response);
           alert('Información actualizada con éxito');
+          this.isLoading = false;
           this.router.navigate(['/meseros']);
         },
         error => {

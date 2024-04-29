@@ -42,7 +42,10 @@
                    <option *ngFor="let rol of roles" [value]="rol.id">{{ rol.rol }}</option>
                   </select>
               </div>
-              <button type="submit" class="btn btn-primary">Actualizar</button>
+              <button type="submit" class="btn btn-primary" [disabled]=" isLoading">
+               <span *ngIf="!isLoading">Actualizar</span>
+               <span *ngIf="isLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+             </button>
           </form>
        </div>
    </div>

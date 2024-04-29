@@ -6,11 +6,21 @@ import { CommonModule } from '@angular/common';
 import { User } from '../../interfaces/user.interface';
 import { Rol } from '../../interfaces/rol.interface';
 import { fadeInOutAnimations } from '../../animations';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 @Component({
   selector: 'app-users-edit',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
-  animations: [fadeInOutAnimations],
+  animations: [fadeInOutAnimations, trigger('fadeInOut', [
+    state('in', style({ opacity: 1 })),
+    transition(':enter', [
+      style({ opacity: 0 }),
+      animate('500ms', style({ opacity: 1 }))
+    ]),
+    transition(':leave', [
+      animate('500ms', style({ opacity: 0 }))
+    ])
+  ])],
   templateUrl: './users-edit.component.html',
   styleUrl: './users-edit.component.scss'
 })
@@ -18,6 +28,7 @@ export class UsersEditComponent {
   usersEditForm!: FormGroup;
   id: number = 0;
   cargando: boolean = true;
+  isLoading = false;
   roles: Rol[] = []
   
  constructor(
@@ -75,12 +86,14 @@ export class UsersEditComponent {
     }
 
  onSubmit(): void {
+  this.isLoading = true;
     if (this.usersEditForm.valid) {
       console.log(this.usersEditForm.value)
       this.userService.updateUser(this.id, this.usersEditForm.value).subscribe(
         response=>{
           console.log('usuario editado con exito');
       alert('Informacion actualizada con exito');
+      this.isLoading = false;
       this.router.navigate(['/product-list/index']);
         },
         error => console.error('Error al editar:', error)
