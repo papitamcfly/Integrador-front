@@ -1,7 +1,8 @@
 <div class="center">
     <h1>Ingresos Por Dia</h1>
       </div>
-      
+      <div class="container login-container mt-3" [@fadeInOut]="cargando ? 'void' : 'in'">
+        <div *ngIf="!cargando; else cargandoTemplate">
       <div *ngIf="ingresos.length === 0"class="center">
         <p>No hay ingresos disponibles.</p>
       </div>
@@ -23,3 +24,13 @@
             </tbody>
         </table>
       </div>
+    </div>
+    <ng-template #cargandoTemplate>
+      <div class="d-flex justify-content-center align-items-center" style="height: 10vh;">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Cargando...</span>
+        </div>
+        <div class="ms-3">Cargando datos...</div>
+      </div>
+    </ng-template>
+    </div>

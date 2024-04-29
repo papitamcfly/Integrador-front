@@ -6,17 +6,20 @@ import { PusherserviceService } from '../../pusherservice.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { OnInit } from '@angular/core';
+import { fadeInOutAnimations } from '../../animations';
 
 @Component({
   selector: 'app-ingresos-por-semana',
   standalone: true,
   imports: [CommonModule, FormsModule],
+  animations: fadeInOutAnimations,
   templateUrl: './ingresos-por-semana.component.html',
   styleUrl: './ingresos-por-semana.component.css'
 })
 export class IngresosPorSemanaComponent {
   ingresos: Ingresos[] = []
   type:string = 'PorSemana'
+  cargando: boolean = true;
   constructor(private IngresosService: IngresosServiceService, private router: Router, private pusherService:PusherserviceService){}
   ngOnInit(){
     this.getIngresoByStatus(this.type)
@@ -28,6 +31,7 @@ export class IngresosPorSemanaComponent {
     this.IngresosService.viewIngresosByType(type).subscribe(
       (ingresos: Ingresos[])=> {
         this.ingresos = ingresos
+        this.cargando = false; 
         console.log(ingresos)
       },
       (error) => {

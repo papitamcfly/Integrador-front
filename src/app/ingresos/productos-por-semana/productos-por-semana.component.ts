@@ -6,17 +6,20 @@ import { PusherserviceService } from '../../pusherservice.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { OnInit } from '@angular/core';
+import { fadeInOutAnimations } from '../../animations';
 
 @Component({
   selector: 'app-productos-por-semana',
   standalone: true,
   imports: [CommonModule, FormsModule],
+  animations: fadeInOutAnimations,
   templateUrl: './productos-por-semana.component.html',
   styleUrl: './productos-por-semana.component.css'
 })
 export class ProductosPorSemanaComponent implements OnInit {
   productos: ProductGroup[] = []
   type:string = 'PorSemana'
+  cargando: boolean = true;
   constructor(private IngresosService: IngresosServiceService, private router: Router, private pusherService:PusherserviceService){}
   ngOnInit(){
     this.getIngresoByStatus(this.type)
@@ -28,6 +31,7 @@ export class ProductosPorSemanaComponent implements OnInit {
     this.IngresosService.viewIngresosWithProducts(type).subscribe(
       (productos: ProductGroup[])=> {
         this.productos = productos
+        this.cargando = false; 
         console.log(productos)
       },
       (error) => {
