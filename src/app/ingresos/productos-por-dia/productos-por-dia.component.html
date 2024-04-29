@@ -13,12 +13,14 @@
             <thead>
               <tr>
                 <th>Nombre de Producto</th>
+                <th>Cantidad</th>
                 <th>Ingresos Totales</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let product of productoGroup.productos">
                 <td>{{ product.producto }}</td>
+                <td>{{product.totalQuantity}}</td>
                 <td>$ {{ product.totalIngresos | number:'1.2-2' }}</td>
               </tr>
             </tbody>

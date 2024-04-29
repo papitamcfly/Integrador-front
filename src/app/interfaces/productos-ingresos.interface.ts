@@ -6,4 +6,5 @@ export interface ProductGroup {
   interface Product {
     producto: string;
     totalIngresos: number;
+    totalQuantity: number;
   }
