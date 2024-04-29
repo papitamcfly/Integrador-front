@@ -5,16 +5,19 @@ import { CommonModule } from '@angular/common';
 import { ProductList } from '../interfaces/product-list';
 import { CartComponent } from '../cart/cart.component';
 import { MessageService } from '../message.service';
+import { fadeInOutAnimations } from '../animations';
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
   imports: [CommonModule, CartComponent],
+  animations: fadeInOutAnimations,
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent implements OnInit {
   products: ProductList[] = [];
+  cargando: boolean = true;
 
   constructor(
     private productService: ProductService,
@@ -28,7 +31,7 @@ export class ProductListComponent implements OnInit {
 
   getProducts(): void {
     this.productService.getProducts('activo')
-      .subscribe(products => this.products = products);
+      .subscribe(products => {this.products = products, this.cargando = false; });
   }
 
   addToCart(product: ProductList, cantidad: string): void {

@@ -2,25 +2,37 @@
   <div class="grid-container">
     <div class="product-section">
       <h2 class="text-center mb-4">Menú</h2>
-      <div *ngIf="products.length === 0" class="no-products text-center">
-        <p>No hay productos disponibles.</p>
-      </div>
-      <div *ngIf="products.length > 0" class="row product-list">
-        <div *ngFor="let product of products" class="col-md-4 mb-4">
-          <div class="card product-item">
-            <img [src]="product.img" class="card-img-top" alt="producto">
-            <div class="card-body">
-              <h3 class="card-title">{{ product.name }}</h3>
-              <p class="card-text">{{ product.description }}</p>
-              <div class="quantity-group">
-                <label for="cantidadInput">Cantidad:</label>
-                <input type="number" class="form-control" id="cantidadInput" name="cantidadInput" #cantidadInput value="1" min="1">
+      <div class="container login-container mt-3" [@fadeInOut]="cargando ? 'void' : 'in'">
+        <div *ngIf="!cargando; else cargandoTemplate">
+          <div *ngIf="products.length === 0" class="no-products text-center">
+            <p>No hay productos disponibles.</p>
+          </div>
+          <div *ngIf="products.length > 0" class="row product-list">
+            <div *ngFor="let product of products" class="col-md-4 mb-4">
+              <div class="card product-item">
+                <img [src]="product.img" class="card-img-top" alt="producto">
+                <div class="card-body">
+                  <h3 class="card-title">{{ product.name }}</h3>
+                  <p class="card-text">{{ product.description }}</p>
+                  <div class="quantity-group">
+                    <label for="cantidadInput">Cantidad:</label>
+                    <input type="number" class="form-control" id="cantidadInput" name="cantidadInput" #cantidadInput value="1" min="1">
+                  </div>
+                  <p class="card-text">Precio: {{ product.price | currency }}</p>
+                  <button class="btn btn-primary" (click)="addToCart(product, cantidadInput.value)">Agregar al carrito</button>
+                </div>
               </div>
-              <p class="card-text">Precio: {{ product.price | currency }}</p>
-              <button class="btn btn-primary" (click)="addToCart(product, cantidadInput.value)">Agregar al carrito</button>
             </div>
           </div>
         </div>
+        <ng-template #cargandoTemplate>
+          <div class="d-flex justify-content-center align-items-center" style="height: 10vh;">
+            <div class="spinner-border text-primary" role="status">
+              <span class="visually-hidden">Cargando...</span>
+            </div>
+            <div class="ms-3">Cargando datos...</div>
+          </div>
+        </ng-template>
       </div>
     </div>
     <div class="cart-section">

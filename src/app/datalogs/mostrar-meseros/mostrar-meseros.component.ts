@@ -3,16 +3,19 @@ import { Mesero } from '../../interfaces/mesero';
 import { DataService } from '../data.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { fadeInOutAnimations } from '../../animations';
 
 @Component({
   selector: 'app-mostrar-meseros',
   standalone: true,
   imports: [CommonModule],
+  animations: fadeInOutAnimations,
   templateUrl: './mostrar-meseros.component.html',
   styleUrl: './mostrar-meseros.component.scss'
 })
 export class MostrarMeserosComponent implements OnInit {
   robots: Mesero[] = [];
+  cargando: boolean = true;
 
   constructor(private router: Router, private robotService: DataService) { }
 
@@ -24,6 +27,7 @@ export class MostrarMeserosComponent implements OnInit {
     this.robotService.getRobots().subscribe(
       (robots: Mesero[]) => {
         this.robots = robots;
+        this.cargando = false; 
       },
       (error: any) => {
         console.error('Error al obtener los robots:', error);

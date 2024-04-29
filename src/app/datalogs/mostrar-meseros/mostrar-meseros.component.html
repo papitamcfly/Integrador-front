@@ -2,14 +2,26 @@
 <h2 class="robot-list-title">Lista de Robots
   <button (click)="agregarRobot()" class="robot-button-create">+ Agregar Robot</button>
 </h2>
-<ul class="robot-list">
-  <li *ngFor="let robot of robots" class="robot-item">
-    <h3 class="robot-name">{{ robot.Nombre }}</h3>
-      <!-- Agrega aquí cualquier otra información del robot que desees mostrar -->
-    <div class="button-group">
-      <button (click)="navigateToRobotDetail(robot.Id)" class="robot-button">Ver Detalles</button>
-      <button (click)="editRobot(robot.Id)" class="robot-button">Editar</button>
-      <button (click)="eliminateRobot(robot.Id)" class="robot-button-del">Eliminar</button>
+<div class="container login-container mt-3" [@fadeInOut]="cargando ? 'void' : 'in'">
+  <div *ngIf="!cargando; else cargandoTemplate">
+    <ul class="robot-list">
+      <li *ngFor="let robot of robots" class="robot-item">
+        <h3 class="robot-name">{{ robot.Nombre }}</h3>
+          <!-- Agrega aquí cualquier otra información del robot que desees mostrar -->
+        <div class="button-group">
+          <button (click)="navigateToRobotDetail(robot.Id)" class="robot-button">Ver Detalles</button>
+          <button (click)="editRobot(robot.Id)" class="robot-button">Editar</button>
+          <button (click)="eliminateRobot(robot.Id)" class="robot-button-del">Eliminar</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+<ng-template #cargandoTemplate>
+  <div class="d-flex justify-content-center align-items-center" style="height: 10vh;">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Cargando...</span>
     </div>
-  </li>
-</ul>
+    <div class="ms-3">Cargando datos...</div>
+  </div>
+</ng-template>
+</div>
