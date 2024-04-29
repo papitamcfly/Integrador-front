@@ -1,15 +1,15 @@
- <div>
-    <nav>
-      <button (click)="showComponent = 'activos'">prodcutos activos</button>
-      <button (click)="showComponent = 'inactivos'">productos inactivos</button>
-    </nav>
-  
-    <ng-container *ngIf="showComponent === 'activos'">
-<app-activados></app-activados>
-    </ng-container>
-  
-    <ng-container *ngIf="showComponent === 'inactivos'">
-    <app-desactivados></app-desactivados>
-    </ng-container>
-      
-  </div>
+<h2 class="robot-list-title">Lista de Productos
+  <button (click)="agregarProducto()" class="robot-button-create">+ Agregar Producto</button>
+</h2>
+<nav>
+  <button (click)="showComponent = 'activos'" class="nav-button">Prodcutos activos</button>
+  <button (click)="showComponent = 'inactivos'" class="nav-button">Productos inactivos</button>
+</nav>
+
+<ng-container *ngIf="showComponent === 'activos'">
+  <app-activados></app-activados>
+</ng-container>
+
+<ng-container *ngIf="showComponent === 'inactivos'">
+  <app-desactivados></app-desactivados>
+</ng-container> 

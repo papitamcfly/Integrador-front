@@ -10,6 +10,7 @@
         <li *ngIf="hascAuthToken"><a class="nav-link" routerLink="/product-list/index">Menu</a></li>
         <li *ngIf="hascAuthToken"><a class="nav-link" routerLink="/ordenes/all-orders">Ordenes</a></li>
         <li *ngIf="hascAuthToken"><a class="nav-link" routerLink="/ingresos/base">Ingresos</a></li>
+        <li *ngIf="hascAuthToken && rolId === 3"><a class="nav-link" routerLink="/productos/index">Productos</a></li>
         <li *ngIf="hascAuthToken && rolId === 3"><a class="nav-link" routerLink="/meseros">Meseros</a></li>
         <li *ngIf="hascAuthToken && rolId === 3"><a class="nav-link" routerLink="/all-logs">Logs</a></li>
 
