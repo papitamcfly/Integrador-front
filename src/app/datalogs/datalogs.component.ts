@@ -5,17 +5,20 @@ import {Data} from '../interfaces/data'
 import { interval, Subscription } from 'rxjs';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { switchMap } from 'rxjs/operators';
+import { fadeInOutAnimations } from '../animations';
 
 @Component({
   selector: 'app-datalogs',
   standalone: true,
   imports: [CommonModule,FormsModule],
+  animations: fadeInOutAnimations,
   templateUrl: './datalogs.component.html',
   styleUrl: './datalogs.component.css'
 })
 export class DatalogsComponent implements OnInit, OnDestroy {
   Data: Data[] = [];
   filterValue: string = '';
+  cargando: boolean = true;
 
   private pollingSubscription: Subscription | null = null;
   constructor(private dataService: DataService) { }
@@ -40,6 +43,7 @@ export class DatalogsComponent implements OnInit, OnDestroy {
         (data: Data[]) => {
           console.log('datos actualizados')
           this.Data = data;
+          this.cargando = false; 
         },
         (error: any) => {
           console.error('Error al obtener los datos:', error);

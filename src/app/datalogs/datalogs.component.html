@@ -4,6 +4,8 @@
     <label for="filterInput">Filtrar por identificador:</label>
     <input type="text" id="filterInput" [(ngModel)]="filterValue">
   </div>
+  <div class="container login-container mt-3" [@fadeInOut]="cargando ? 'void' : 'in'">
+    <div *ngIf="!cargando; else cargandoTemplate">
   <table class="table table-striped">
     <thead>
       <tr>
@@ -22,4 +24,13 @@
       </tr>
     </tbody>
   </table>
+</div>
+<ng-template #cargandoTemplate>
+  <div class="d-flex justify-content-center align-items-center" style="height: 10vh;">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Cargando...</span>
+    </div>
+    <div class="ms-3">Cargando datos...</div>
+  </div>
+</ng-template>
 </div>
