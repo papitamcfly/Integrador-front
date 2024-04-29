@@ -5,17 +5,20 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PusherserviceService } from '../../pusherservice.service';
+import { fadeInOutAnimations } from '../../animations';
 
 @Component({
   selector: 'app-ordenes-terminadas',
   standalone: true,
   imports: [CommonModule,FormsModule],
+  animations: fadeInOutAnimations,
   templateUrl: './ordenes-terminadas.component.html',
   styleUrl: './ordenes-terminadas.component.scss'
 })
 export class OrdenesTerminadasComponent implements OnInit {
   orders: Ordenes[] = []
   status:string = 'entregada'
+  cargando: boolean = true;
   constructor(private orderservice: OrderService,  private router: Router, private pusherservice:PusherserviceService){
 
   }
@@ -30,6 +33,7 @@ export class OrdenesTerminadasComponent implements OnInit {
     this.orderservice.viewOrdersByStatus(status).subscribe(
       (orders: Ordenes[])=> {
         this.orders = orders
+        this.cargando = false; 
         console.log(orders)
       },
       (erorr) => {

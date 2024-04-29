@@ -5,17 +5,20 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PusherserviceService } from '../../pusherservice.service';
+import { fadeInOutAnimations } from '../../animations';
 
 @Component({
   selector: 'app-ordenes-en-proceso',
   standalone: true,
   imports: [CommonModule,FormsModule],
+  animations: fadeInOutAnimations,
   templateUrl: './ordenes-en-proceso.component.html',
   styleUrl: './ordenes-en-proceso.component.scss'
 })
 export class OrdenesEnProcesoComponent {
   orders: Ordenes[] = []
   status:string = 'preparando'
+  cargando: boolean = true;
   constructor(private orderservice: OrderService,  private router: Router, private pusherService:PusherserviceService){
 
   }
@@ -30,6 +33,7 @@ export class OrdenesEnProcesoComponent {
     this.orderservice.viewOrdersByStatus(status).subscribe(
       (orders: Ordenes[])=> {
         this.orders = orders
+        this.cargando = false; 
         console.log(orders)
       },
       (erorr) => {
