@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { CartItem } from '../interfaces/cart-item';
 import { OrderService } from '../ordenes/order.service';
 import { ProductList } from '../interfaces/product-list';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 import { Router } from '@angular/router';
 import { MessageService } from '../message.service';
 import { Subscription } from 'rxjs';
@@ -14,12 +15,25 @@ import { Subscription } from 'rxjs';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.scss']
+  styleUrls: ['./cart.component.scss'],
+  animations: [
+    trigger('fadeInOut', [
+      state('in', style({ opacity: 1 })),
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('500ms', style({ opacity: 1 }))
+      ]),
+      transition(':leave', [
+        animate('500ms', style({ opacity: 0 }))
+      ])
+    ])
+  ]
 })
 export class CartComponent implements OnInit, OnDestroy {
   cart: CartItem[] = [];
   Sendemail: boolean = false;
   clientEmail: string = '';
+  isLoading = false;
   private subscription: Subscription | null = null;
 
   constructor(
@@ -66,6 +80,7 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   placeOrder(): void {
+    this.isLoading = true;
     const total = this.getTotal();
     const order = {
       items: this.cart.map(item => ({ product_id: item.product.id, quantity: item.quantity })),
@@ -80,6 +95,7 @@ export class CartComponent implements OnInit, OnDestroy {
           }
           this.cartService.clearCart();
           this.cart = [];
+          this.isLoading = false;
           alert('Orden realizada con éxito');
         },
         error => {
