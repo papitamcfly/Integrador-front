@@ -44,10 +44,11 @@ export class CrearProductosComponent implements OnInit {
       this.productStoreForm.get('img')?.setValue(null);
     }
   }
+
   onSubmit(): void {
     this.submitted = true;
-
     if (this.productStoreForm.valid) {
+      console.log(this.productStoreForm.value);
       this.productService.createProduct(this.productStoreForm.value).subscribe(
         (response) => {
           console.log('Producto creado:', response);
@@ -61,6 +62,7 @@ export class CrearProductosComponent implements OnInit {
       );
     }
   }
+  
   validarTipoArchivo: ValidatorFn = (control: AbstractControl): { [key: string]: any } | null => {
     if (control.value && control.value instanceof File) {
       const fileType = control.value.type;

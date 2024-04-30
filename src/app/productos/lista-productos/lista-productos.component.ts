@@ -19,6 +19,6 @@ export class ListaProductosComponent{
 
   showComponent:string = 'activos'
   agregarProducto(): void {
-    this.router.navigate(['/products/create']);
+    this.router.navigate(['/productos/store']);
   }
 }

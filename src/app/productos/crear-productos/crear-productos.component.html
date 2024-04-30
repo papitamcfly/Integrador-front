@@ -4,7 +4,7 @@
       <h2>Registrar nuevo producto</h2>
     </div>
     <div class="card-body">
-      <form [formGroup]="productStoreForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="productStoreForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
         <div class="form-group">
           <label for="name">Nombre</label>
           <div class="input-icon">
