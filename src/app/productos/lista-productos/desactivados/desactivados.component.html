@@ -1,27 +1,43 @@
 <div class="container">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Nombre</th>
-          <th>Descripción</th>
-          <th>Precio</th>
-          <th>Imagen</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let product of products">
-          <td>{{ product.name }}</td>
-          <td>{{ product.description }}</td>
-          <td>{{ product.price | currency }}</td>
-          <td><img [src]="product.img" alt="{{ product.name }}" class="product-image"></td>
-          <td>
-            <button (click)="changestatus(product.id)" class="btn btn-primary">volver a activar</button>
-            <button (click)="deleteproduct(product.id)" class="btn btn-danger">Eliminar permanentemente</button>
+  <div class="container login-container mt-3" [@fadeInOut]="cargando ? 'void' : 'in'">
+    <div *ngIf="!cargando; else cargandoTemplate">
+      <div *ngIf="products.length === 0"class="center">
+        <p>No hay productos desactivados al momento.</p>
+      </div>
+      <div *ngIf="products.length > 0"class="center">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Imagen</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products">
+            <td>{{ product.name }}</td>
+            <td>{{ product.description }}</td>
+            <td>{{ product.price | currency }}</td>
+            <td><img [src]="product.img" alt="{{ product.name }}" class="product-image"></td>
+            <td>
+              <button (click)="changestatus(product.id)" class="btn btn-primary">volver a activar</button>
+              <button (click)="deleteproduct(product.id)" class="btn btn-danger">Eliminar permanentemente</button>
 
-          </td>
-        </tr>
-      </tbody>
-    </table>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <ng-template #cargandoTemplate>
+    <div class="d-flex justify-content-center align-items-center" style="height: 10vh;">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Cargando...</span>
+      </div>
+      <div class="ms-3">Cargando datos...</div>
+    </div>
+  </ng-template>
   </div>
 

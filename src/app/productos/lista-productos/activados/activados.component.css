@@ -3,3 +3,8 @@
     height: 100px; /* Set the height to your desired size */
     object-fit: cover; /* Ensure the image covers the entire space */
   }
+  .center {
+    margin: 0 auto;
+    width: 90%; /* Adjust the width as needed */
+    text-align: center;
+}

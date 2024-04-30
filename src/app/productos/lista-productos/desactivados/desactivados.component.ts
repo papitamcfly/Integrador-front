@@ -3,15 +3,19 @@ import { ProductList } from '../../../interfaces/product-list';
 import { ProductService } from '../../../product-list/product.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { fadeInOutAnimations } from '../../../animations';
+
 @Component({
   selector: 'app-desactivados',
   standalone: true,
   imports: [CommonModule,RouterModule],
+  animations: fadeInOutAnimations,
   templateUrl: './desactivados.component.html',
   styleUrl: './desactivados.component.css'
 })
 export class DesactivadosComponent implements OnInit {
   products: ProductList[] = [];
+  cargando: boolean = true;
 
   constructor(
     private productService: ProductService,
@@ -23,7 +27,7 @@ export class DesactivadosComponent implements OnInit {
 
   getProducts(): void {
     this.productService.getProducts('inactivo')
-      .subscribe(products => this.products = products);
+      .subscribe(products => {this.products = products, this.cargando = false});
   }
   changestatus(id: number): void {
     if (confirm('¿Estás seguro de activar este producto?')) {

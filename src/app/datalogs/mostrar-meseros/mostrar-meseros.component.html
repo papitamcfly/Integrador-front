@@ -1,6 +1,6 @@
 <!-- robot-list.component.html -->
 <h2 class="robot-list-title">Lista de Robots
-  <button (click)="agregarRobot()" class="robot-button-create">+ Agregar Robot</button>
+  <button (click)="agregarRobot()" class="robot-button-create">+</button>
 </h2>
 <div class="container login-container mt-3" [@fadeInOut]="cargando ? 'void' : 'in'">
   <div *ngIf="!cargando; else cargandoTemplate">
