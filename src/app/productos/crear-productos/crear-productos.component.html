@@ -95,6 +95,7 @@
             id="img"
             (change)="onFileChange($event)"
             class="form-control"
+            accept=".png, .jpg, .jpeg"
             [ngClass]="{
               'is-invalid':
                 submitted && formControls['img'].errors

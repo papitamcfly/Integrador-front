@@ -49,7 +49,23 @@ export class CrearProductosComponent implements OnInit {
     this.submitted = true;
     if (this.productStoreForm.valid) {
       console.log(this.productStoreForm.value);
-      this.productService.createProduct(this.productStoreForm.value).subscribe(
+      const formData = new FormData();
+      formData.append('name', this.productStoreForm.value.name);
+      formData.append('description', this.productStoreForm.value.description);
+      formData.append('price', this.productStoreForm.value.price);
+      formData.append('img', this.productStoreForm.value.img);
+      console.log(formData);
+      formData.forEach((value, key) => {
+        console.log(key, value);
+      });
+      const productData = {
+        name: this.productStoreForm.value.name,
+        description: this.productStoreForm.value.description,
+        price: this.productStoreForm.value.price,
+        img: this.productStoreForm.value.img  // Assuming 'img' is a string value (e.g., filename)
+      };
+      console.log(productData)
+      this.productService.createProduct(productData).subscribe(
         (response) => {
           console.log('Producto creado:', response);
           alert('Producto creado con éxito.');
