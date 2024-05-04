@@ -4,7 +4,7 @@ export interface Datos {
     identificador: string;
     valor: number;
     meseroID: number;
-    descripcion:string
-    horafecha:string
-    
-}
+    descripcion: string;
+    horafecha: string;
+    fecha: string; // Nueva propiedad para almacenar la fecha formateada
+  }

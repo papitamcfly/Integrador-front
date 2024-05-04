@@ -44,7 +44,7 @@ export class LogsRecientesComponent implements OnInit, OnDestroy {
       )
       .subscribe(
         (data: Datos[]) => {
-        this.datos = data;
+          this.datos = data.map((item: Datos) => ({ ...item, fecha: this.formatDate(item.horafecha) }));
         },
         (error: any) => {
           console.error('Error al obtener los datos:', error);
@@ -68,5 +68,16 @@ export class LogsRecientesComponent implements OnInit, OnDestroy {
         console.error('Error al obtener los datos:', error);
       }
     );
+  }
+
+  formatDate(horafecha: string): string {
+    const [tiempo, fecha] = horafecha.split(' ');
+    const [hora, minutos, segundos] = tiempo.split('-');
+    const [anio, mes, dia] = fecha.split('/');
+  
+    // Corregir el formato del año
+    const anioCorregido = anio.replace(':', '-');
+  
+    return `${hora}:${minutos}:${segundos} ${mes}-${anioCorregido.slice(-2)}-${dia}`;
   }
 }

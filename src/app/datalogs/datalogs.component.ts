@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import {DataService} from './data.service'
-import {Data} from '../interfaces/data'
+import { DataService } from './data.service'
+import { Data } from '../interfaces/data'
 import { interval, Subscription } from 'rxjs';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { switchMap } from 'rxjs/operators';
@@ -10,30 +10,31 @@ import { fadeInOutAnimations } from '../animations';
 @Component({
   selector: 'app-datalogs',
   standalone: true,
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule, FormsModule],
   animations: fadeInOutAnimations,
   templateUrl: './datalogs.component.html',
-  styleUrl: './datalogs.component.css'
+  styleUrls: ['./datalogs.component.css']
 })
 export class DatalogsComponent implements OnInit, OnDestroy {
   Data: Data[] = [];
   filterValue: string = '';
   cargando: boolean = true;
-
   private pollingSubscription: Subscription | null = null;
+
   constructor(private dataService: DataService) { }
+
   ngOnInit(): void {
-    this.startPolling(
-    );
+    this.startPolling();
   }
+
   ngOnDestroy(): void {
     this.stopPolling();
   }
+
   get filteredData(): Data[] {
-    return this.filterValue
-      ? this.Data.filter(log => log.identificador.includes(this.filterValue))
-      : this.Data;
+    return this.filterValue ? this.Data.filter(log => log.identificador.includes(this.filterValue)) : this.Data;
   }
+
   startPolling(): void {
     this.pollingSubscription = interval(5000)
       .pipe(
@@ -41,9 +42,10 @@ export class DatalogsComponent implements OnInit, OnDestroy {
       )
       .subscribe(
         (data: Data[]) => {
-          console.log('datos actualizados')
-          this.Data = data;
-          this.cargando = false; 
+          console.log('datos actualizados');
+          console.log('Formato de horafecha:', data[0].horafecha);
+          this.Data = data.map((item: Data) => ({ ...item, fecha: this.formatDate(item.horafecha) }));
+          this.cargando = false;
         },
         (error: any) => {
           console.error('Error al obtener los datos:', error);
@@ -56,5 +58,15 @@ export class DatalogsComponent implements OnInit, OnDestroy {
       this.pollingSubscription.unsubscribe();
     }
   }
+
+  formatDate(horafecha: string): string {
+    const [tiempo, fecha] = horafecha.split(' ');
+    const [hora, minutos, segundos] = tiempo.split('-');
+    const [anio, mes, dia] = fecha.split('/');
+
+    // Corregir el formato del año
+    const anioCorregido = anio.replace(':', '-');
+
+    return `${hora}:${minutos}:${segundos} ${mes}-${anioCorregido.slice(-2)}-${dia}`;
+  }
 }
- 
