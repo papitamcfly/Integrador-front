@@ -61,12 +61,8 @@ export class DatalogsComponent implements OnInit, OnDestroy {
 
   formatDate(horafecha: string): string {
     const [tiempo, fecha] = horafecha.split(' ');
-    const [hora, minutos, segundos] = tiempo.split('-');
-    const [anio, mes, dia] = fecha.split('/');
-
-    // Corregir el formato del año
-    const anioCorregido = anio.replace(':', '-');
-
-    return `${hora}:${minutos}:${segundos} ${mes}-${anioCorregido.slice(-2)}-${dia}`;
+    const [hora, minutos, segundos] = tiempo.split(':');
+    const [anio, mes, dia] = fecha.split('-');
+    return `${hora}:${minutos}:${segundos} ${anio}-${mes}-${dia}`;
   }
 }
