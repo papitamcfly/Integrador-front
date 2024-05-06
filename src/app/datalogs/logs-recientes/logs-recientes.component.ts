@@ -73,7 +73,8 @@ export class LogsRecientesComponent implements OnInit, OnDestroy {
   formatDate(horafecha: string): string {
     const [tiempo, fecha] = horafecha.split(' ');
     const [hora, minutos, segundos] = tiempo.split(':');
-    const [anio, mes, dia] = fecha.split('-');
+    const [anio, mes, dia] = fecha.split('/');
+  
     return `${hora}:${minutos}:${segundos} ${anio}-${mes}-${dia}`;
   }
 }

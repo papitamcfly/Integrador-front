@@ -44,7 +44,14 @@ export class DatalogsComponent implements OnInit, OnDestroy {
         (data: Data[]) => {
           console.log('datos actualizados');
           console.log('Formato de horafecha:', data[0].horafecha);
-          this.Data = data.map((item: Data) => ({ ...item, fecha: this.formatDate(item.horafecha) }));
+          // Ordenar los datos de forma descendente según la propiedad horafecha
+          const sortedData = data.sort((a, b) => {
+            return new Date(b.horafecha).getTime() - new Date(a.horafecha).getTime();
+          });
+          this.Data = sortedData.map((item: Data) => ({
+            ...item,
+            fecha: this.formatDate(item.horafecha)
+          }));
           this.cargando = false;
         },
         (error: any) => {
@@ -62,7 +69,8 @@ export class DatalogsComponent implements OnInit, OnDestroy {
   formatDate(horafecha: string): string {
     const [tiempo, fecha] = horafecha.split(' ');
     const [hora, minutos, segundos] = tiempo.split(':');
-    const [anio, mes, dia] = fecha.split('-');
+    const [anio, mes, dia] = fecha.split('/');
+  
     return `${hora}:${minutos}:${segundos} ${anio}-${mes}-${dia}`;
   }
 }
